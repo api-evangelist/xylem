@@ -6,6 +6,10 @@ url:
 modified: '2026-03-21'
 apis: []
 common:
+  - type: TrustCenter
+    url: security/xylem-trust-center.yml
+  - type: DomainSecurity
+    url: security/xylem-domain-security.yml
   - type: GitHubOrganization
     url: https://github.com/Xylem
   - type: LinkedIn

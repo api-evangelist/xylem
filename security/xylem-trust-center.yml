@@ -1,0 +1,13 @@
+generated: '2026-07-11'
+method: searched
+probe: true
+source: https://trust.xylem.com/
+url: https://trust.xylem.com/
+certifications:
+- ISO 27001
+evidence:
+- source: https://trust.xylem.com/
+  keywords:
+  - iso 27001
+  - iso/iec 27001
+  - trust center
