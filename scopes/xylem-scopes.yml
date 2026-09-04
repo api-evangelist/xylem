@@ -1,0 +1,72 @@
+generated: '2026-09-04'
+method: probed
+source: https://cloud.xylem.com/xcloud/auth/realms/xcloud/.well-known/openid-configuration
+docs: null
+note: >-
+  scopes_supported read verbatim from the Xylem Cloud (xCloud) Keycloak realm's OpenID
+  Connect discovery document (HTTP 200, 2026-09-04). Xylem publishes no scopes or
+  permissions reference page, so no descriptions beyond the standard OIDC/Keycloak
+  meanings are asserted here — the two api:* entries are Xylem's own and are recorded
+  exactly as advertised, including the trailing-colon entry, which appears to be an
+  unfinished parent scope on the realm rather than a usable value.
+  docs is null because no such page exists to link.
+issuer: https://cloud.xylem.com/xcloud/auth/realms/xcloud
+scope_count: 14
+scopes:
+  - name: openid
+    description: Required OIDC scope; requests an ID token.
+    standard: true
+  - name: profile
+    description: Standard OIDC claims — name, given_name, family_name, preferred_username.
+    standard: true
+  - name: email
+    description: Standard OIDC email and email_verified claims.
+    standard: true
+  - name: address
+    description: Standard OIDC address claim.
+    standard: true
+  - name: phone
+    description: Standard OIDC phone_number claims.
+    standard: true
+  - name: offline_access
+    description: Standard OIDC scope requesting a refresh token usable while the user is offline.
+    standard: true
+  - name: roles
+    description: Keycloak built-in — realm and client role mappings in the token.
+    standard: false
+  - name: web-origins
+    description: Keycloak built-in — allowed CORS web origins.
+    standard: false
+  - name: acr
+    description: Keycloak built-in — authentication context class reference claim.
+    standard: false
+  - name: microprofile-jwt
+    description: Keycloak built-in — Eclipse MicroProfile JWT claim set (upn, groups).
+    standard: false
+  - name: basic
+    description: Keycloak built-in — minimal claim set (sub, auth_time).
+    standard: false
+  - name: service_account
+    description: >-
+      Xylem realm scope. Advertised alongside the client_credentials grant; the shape a
+      machine-to-machine integration would request. No published description.
+    standard: false
+    provider_defined: true
+  - name: api:customer
+    description: >-
+      Xylem realm scope naming customer-facing API access. No published description or
+      operation mapping — Xylem ships no API reference this can be bound to.
+    standard: false
+    provider_defined: true
+  - name: 'api:customer:'
+    description: >-
+      Advertised verbatim with a trailing colon. Recorded as found; it reads as an
+      unfinished or parent scope on the realm rather than a requestable value.
+    standard: false
+    provider_defined: true
+    anomaly: true
+gaps:
+  - No scopes or permissions reference page is published anywhere on xylem.com.
+  - >-
+    The two provider-defined api:* scopes carry no description and no operation list,
+    so an integrator cannot tell what api:customer actually authorizes.

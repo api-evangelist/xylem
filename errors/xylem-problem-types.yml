@@ -1,0 +1,87 @@
+generated: '2026-09-04'
+method: probed
+source: >-
+  Live unauthenticated requests to https://cloud.xylem.com/xcloud/v1/users/ (401),
+  https://cloud.xylem.com/xcloud/v3/api-docs (404),
+  https://ae-api-view.xylem.com/openapi.json (404) and
+  https://selector-beta-api.xylem.com/ (401), on 2026-09-04.
+note: >-
+  Xylem publishes no error reference and no OpenAPI to derive one from. Everything below
+  was observed on the wire from anonymous requests to Xylem-operated hosts. Nothing is
+  inferred: only status codes and envelopes that were actually returned are listed, and
+  no catalogue of application-level error codes is asserted, because none is published.
+format: proprietary
+media_type: application/json
+rfc9457: false
+rfc9457_note: >-
+  Errors are returned as application/json with a bespoke envelope, not as
+  application/problem+json with type/title/status/detail/instance.
+envelopes:
+  - id: xcloud
+    surface: Xylem Cloud (xCloud) platform API
+    host: cloud.xylem.com
+    media_type: application/json
+    shape:
+      errorCode: string — a screaming-snake symbolic code, e.g. UNAUTHORIZED_ERROR, NOT_FOUND_ERROR
+      details: >-
+        array of {errorCode, messages[], item} — one entry per offending item; observed
+        item values are "path" and "requestId"
+      message: string — human-readable summary, e.g. "Missing authentication header"
+      timestamp: integer — epoch milliseconds
+    correlation_id:
+      present: true
+      location: details[] entry where item == "requestId"
+      note: >-
+        A per-request correlation id is returned in the body. It is NOT echoed in any
+        response header, so a client must parse the error body to obtain it.
+    observed:
+      - status: 401
+        errorCode: UNAUTHORIZED_ERROR
+        message: Missing authentication header
+        url: https://cloud.xylem.com/xcloud/v1/users/
+      - status: 404
+        errorCode: NOT_FOUND_ERROR
+        message: No static resource ... for request ...
+        url: https://cloud.xylem.com/xcloud/v3/api-docs
+  - id: api-gateway
+    surface: Xylem Selector API (pump selection), behind an API gateway
+    host: selector-beta-api.xylem.com
+    media_type: application/json
+    shape:
+      message: string — e.g. "No client found attached to request"
+      code: string — lower-snake symbolic code, e.g. invalid_req_client
+      status: integer — the HTTP status repeated in the body
+    observed:
+      - status: 401
+        code: invalid_req_client
+        message: No client found attached to request
+        url: https://selector-beta-api.xylem.com/
+  - id: vue-services
+    surface: Xylem Vue microservices (Explorer, vStream Get Data, GIS)
+    host: ae-api-view.xylem.com, data-api-view.xylem.com, gis-api-view.xylem.com
+    media_type: text/html
+    shape: 'Bare HTML: <html><body><h1>Resource not found</h1></body></html>'
+    observed:
+      - status: 404
+        url: https://ae-api-view.xylem.com/openapi.json
+      - status: 404
+        url: https://data-api-view.xylem.com/swagger/v1/swagger.json
+    note: >-
+      This surface returns HTML for an error even when the request asked for JSON, so a
+      client cannot parse a failure without content sniffing.
+problem_types: []
+problem_types_note: >-
+  Empty by design. No RFC 9457 problem types, and no published error-code registry,
+  exist to record. Populating this list would require inventing codes Xylem has not
+  published.
+findings:
+  - >-
+    Three Xylem-operated API estates return three incompatible error envelopes
+    (errorCode/details/message/timestamp, message/code/status, and bare HTML). A client
+    integrating with more than one Xylem product must write a handler per estate.
+  - >-
+    None of the three uses application/problem+json, and none returns a correlation id
+    in a response header.
+gaps:
+  - No public error reference or status-code table for any Xylem API.
+  - No documented retry guidance and no Retry-After observed on any response.

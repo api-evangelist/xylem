@@ -1,0 +1,61 @@
+generated: '2026-09-04'
+method: searched
+source: >-
+  https://status.xylem.com/ (HTTP 200, redirects to /access/login),
+  https://www.xylem.com/en-us/about/cybersecurity/security-advisories/ (HTTP 200),
+  https://www.xylem.com/en-us/support/terms-and-conditions/ (HTTP 200)
+note: >-
+  Xylem publishes no API versioning policy, no deprecation policy, no Sunset/Deprecation
+  header commitment and no API SLA — because it publishes no API contract or developer
+  reference at all. What it does operate is a real status page and a real security
+  advisory register, both recorded below with what was actually observed.
+status_page:
+  present: true
+  url: https://status.xylem.com/
+  platform: Atlassian Statuspage (status.xylem.com CNAMEs to stspg-customer.com)
+  name: Xylem NOC Status
+  public: false
+  observed_status: 200
+  observed_url: https://status.xylem.com/access/login
+  note: >-
+    The status page exists and is operated by Xylem on its own hostname, but it is
+    authentication-gated: an anonymous GET lands on /access/login titled "Xylem NOC
+    Status - Login". Component and incident history are therefore not readable without
+    an account. Recorded as present-but-gated, not as a public status page.
+  history_feed: null
+security_advisories:
+  present: true
+  url: https://www.xylem.com/en-us/about/cybersecurity/security-advisories/
+  scheme: XPSA-<year>-<seq> for product advisories, XSA-<year>-<seq> for company advisories
+  count: 17
+  first: '2019-08-14'
+  latest: '2024-11-20'
+  machine_readable: false
+  detail: See security/xylem-vulnerability-disclosure.yml for the register.
+versioning:
+  documented: false
+  scheme_observed: >-
+    A /v1/ path segment is visible on the one Xylem Cloud endpoint the sign-in page
+    names (https://cloud.xylem.com/xcloud/v1/users/), so the platform is at least
+    URI-versioned; no policy explains what v1 guarantees or how v2 would arrive.
+  policy_url: null
+deprecation:
+  policy_published: false
+  sunset_header: unknown
+  deprecation_header: unknown
+  notice_period: null
+  note: >-
+    No deprecation or end-of-life policy for any API or platform was found. Product-level
+    lifecycle notices exist for hardware in customer channels but are not published on
+    the public site in a form that could be read here.
+sla:
+  published: false
+  url: null
+support:
+  url: https://www.xylem.com/en-us/contact-us/
+  secure_connect_support: https://www.xylem.com/en-us/resources/secure-connect-support/
+deprecated_operations: []
+gaps:
+  - No public status page — the NOC status site requires a login.
+  - No API versioning or deprecation policy.
+  - No RSS/Atom/CSAF feed for security advisories or status incidents.

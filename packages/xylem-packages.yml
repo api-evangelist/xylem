@@ -1,0 +1,69 @@
+generated: '2026-09-04'
+method: searched
+source: >-
+  registry.npmjs.org search + scope probe, pypi.org, azuresearch-usnc.nuget.org,
+  and https://www.xylem.com/en-us/products--services/software/ — 2026-09-04.
+note: >-
+  Xylem publishes no first-party client library on any public package registry. The
+  registries were searched by name and the results were checked for ownership rather
+  than for a matching string, because "xylem" is a common botanical word and every
+  strong-looking hit belongs to somebody else. Recorded below with the reason each was
+  rejected, so the next run does not re-litigate them.
+official_package_count: 0
+packages:
+  - name: Xylem.MTE.AzKv
+    registry: nuget
+    url: https://www.nuget.org/packages/Xylem.MTE.AzKv
+    official: false
+    official_note: >-
+      The only registry entry whose publisher string names Xylem — authors "Xylem MTE",
+      plausibly Xylem's MTE metering business. Ownership is NOT verified: there is no
+      project URL, no repository, no licence metadata and a placeholder description
+      ("Package Description"). It is an Azure Key Vault helper, i.e. internal build
+      plumbing, not an API client, so it is not an SDK under any reading. Left
+      official:false pending confirmation from Xylem.
+    version: 1.1.1
+    published: null
+    published_note: >-
+      The NuGet search index does not carry a publish date for this package and the
+      registration blob was not fetched; recorded as null rather than guessed.
+    kind: internal-utility
+  - name: homebridge-sensus
+    registry: npm
+    url: https://www.npmjs.com/package/homebridge-sensus
+    official: false
+    official_note: >-
+      Third-party and explicitly disclaimed. Its own README states "Unofficial. This
+      project is not affiliated with, endorsed by, or supported by Sensus, Xylem, or
+      your water utility." Published by an individual (Josh Marr), not Xylem. Recorded
+      only as evidence that a consumable Sensus Analytics surface exists: the plugin
+      works by logging into a per-utility portal at https://<utility>.sensus-analytics.com
+      and reading the signed-in user's own meter data — a scraped session, not a
+      documented API.
+    version: 1.1.3
+    published: '2026-06-24'
+    kind: community-integration
+rejected:
+  - name: xylem (npm)
+    reason: >-
+      "Cross database object persistence for Node.js" by npm user recidive. Unrelated
+      project that shares the word.
+  - name: xylem (PyPI)
+    reason: >-
+      Python AST-to-source converter by Ariel Antonitis
+      (github.com/arantonitis/xylem). Unrelated.
+  - name: '@xylem-js/jsx, xylem-css, xylem-mongodb (npm)'
+    reason: Unrelated third-party projects sharing the word.
+  - name: '@xylem (npm scope)'
+    reason: 'Probed https://registry.npmjs.org/@xylem/core — HTTP 404. The scope is unclaimed.'
+  - name: goaigua (PyPI)
+    reason: 'HTTP 404 — no package. Idrica/GoAigua ships no public Python client.'
+registries_checked:
+  - npm (search + @xylem scope probe)
+  - PyPI
+  - NuGet
+  - 'not applicable / no candidate surfaced: Maven Central, pkg.go.dev, RubyGems, Packagist, crates.io'
+gaps:
+  - >-
+    No first-party SDK in any language. With no published contract either, an integrator
+    has neither a generated client nor a spec to generate one from.

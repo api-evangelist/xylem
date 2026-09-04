@@ -1,0 +1,106 @@
+generated: '2026-09-04'
+method: probed
+source: >-
+  https://cloud.xylem.com/xcloud/auth/realms/xcloud/.well-known/openid-configuration,
+  https://cloud.xylem.com/xcloud/sso/, live responses from
+  https://cloud.xylem.com/xcloud/v1/users/ and the Xylem Vue service hosts, 2026-09-04.
+note: >-
+  Xylem publishes no API reference, no developer portal and no contract, so this document
+  records only what a machine can observe from the outside plus what the OpenID Connect
+  discovery document states about itself. Every field that could only come from
+  documentation Xylem has not written is recorded as unknown rather than guessed.
+auth:
+  style: OAuth 2.0 / OpenID Connect bearer tokens (Keycloak realm "xcloud")
+  header: Authorization
+  observed_failure: >-
+    401 with body message "Missing authentication header" on
+    https://cloud.xylem.com/xcloud/v1/users/
+  detail: authentication/xylem-authentication.yml
+  scopes: scopes/xylem-scopes.yml
+idempotency:
+  supported: false
+  coverage: none
+  mechanism: null
+  header: null
+  scope: []
+  retention: null
+  evidence: >-
+    No Idempotency-Key or equivalent header is documented anywhere on a Xylem surface,
+    and there is no published write operation to test one against. Recorded as none
+    rather than na because Xylem Cloud demonstrably exposes a mutable resource surface
+    (/xcloud/v1/users/) — replay protection simply is not described.
+reversibility:
+  grade: undocumented
+  applies: true
+  operations: []
+  window: null
+  evidence: >-
+    No cancel, undo, restore, void or rollback operation is documented for any Xylem API,
+    and no retention or reversal window is stated anywhere. This is not `na`: the Xylem
+    Cloud platform manages users, sites and devices for water utilities, so writes exist
+    and reversal matters. It is undocumented, and an agent acting against this platform
+    has no published basis for knowing whether an action can be taken back.
+dry_run_mode:
+  supported: unknown
+  evidence: No documentation of a test, preview, or validate-only mode on any Xylem API.
+pagination:
+  style: unknown
+  params: []
+  response_fields: []
+  evidence: No collection response could be read anonymously and no reference documents pagination.
+filtering:
+  supported: unknown
+field_expansion:
+  supported: unknown
+sparse_fieldsets:
+  supported: unknown
+metadata:
+  supported: unknown
+request_id_tracing:
+  supported: true
+  location: response body only
+  field: details[] entry where item == "requestId"
+  header: null
+  evidence: >-
+    Observed on https://cloud.xylem.com/xcloud/v1/users/ — the 401 body carried
+    requestId 6e112d31-17350268. No X-Request-Id, X-Correlation-Id or traceparent
+    response header was returned.
+versioning:
+  style: URI path segment
+  observed: /xcloud/v1/...
+  policy: null
+  detail: lifecycle/xylem-lifecycle.yml
+error_envelope:
+  consistent: false
+  detail: errors/xylem-problem-types.yml
+  summary: >-
+    Three incompatible envelopes across three Xylem estates; none is
+    application/problem+json.
+rate_limit_signaling:
+  headers_observed: []
+  documented: false
+  detail: rate-limits/xylem-rate-limits.yml
+content_negotiation:
+  json: true
+  note: >-
+    The Xylem Vue services return text/html error bodies regardless of the Accept
+    header, so JSON-only clients break on failure paths.
+transport_security:
+  https_only: true
+  hsts_observed:
+    cloud.xylem.com: max-age=31536000 ; includeSubDomains
+    www.xylem.com: absent
+  headers_observed_on_cloud:
+    - x-content-type-options: nosniff
+    - referrer-policy: no-referrer
+    - cache-control: no-cache, no-store, max-age=0, must-revalidate
+cors:
+  supported: true
+  evidence: >-
+    cloud.xylem.com returns Vary on Origin, Access-Control-Request-Method and
+    Access-Control-Request-Headers, so CORS pre-flight handling is in place.
+gaps:
+  - No published API conventions, style guide, or reference of any kind.
+  - No idempotency mechanism described for a platform that exposes write surfaces.
+  - No reversal operation or reversal window documented for any write.
+  - Correlation ids are body-only, so a failed request cannot be traced from headers.

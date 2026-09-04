@@ -1,0 +1,138 @@
+generated: '2026-09-04'
+method: probed
+source: >-
+  https://cloud.xylem.com/xcloud/auth/realms/xcloud/.well-known/openid-configuration
+  (HTTP 200) plus https://www.xylem.com/en-us/about/cybersecurity/ and
+  https://trust.xylem.com/
+note: >-
+  Every conforms:true row below is asserted from a document that declares the behaviour
+  about itself — the Xylem Cloud OpenID Connect discovery metadata — not from a marketing
+  claim. Xylem publishes no API contract, so nothing here is derived from an OpenAPI.
+  The domain-standard rows are recorded as NOT declared: Xylem's market (water and
+  wastewater utilities, AMI metering) does have standards a contract could signal —
+  MultiSpeak, IEC 61968/61970 CIM, DNP3, SDI-12, OGC SensorThings — and no Xylem
+  surface we could reach declares any of them in a machine-readable way. That is a
+  recorded absence, not a penalty.
+conformance:
+  - id: oauth2
+    conforms: true
+    evidence: >-
+      https://cloud.xylem.com/xcloud/auth/realms/xcloud/.well-known/openid-configuration
+      publishes authorization_endpoint, token_endpoint, revocation_endpoint and
+      grant_types_supported.
+  - id: oidc
+    conforms: true
+    standard: OpenID Connect Discovery 1.0
+    evidence: >-
+      A conforming discovery document is served at the OIDC well-known path for realm
+      xcloud, carrying issuer, jwks_uri, userinfo_endpoint, subject_types_supported and
+      id_token_signing_alg_values_supported.
+  - id: rfc7636-pkce
+    conforms: true
+    evidence: 'code_challenge_methods_supported: ["plain", "S256"]'
+  - id: rfc9126-par
+    conforms: true
+    standard: OAuth 2.0 Pushed Authorization Requests
+    evidence: >-
+      pushed_authorization_request_endpoint published;
+      require_pushed_authorization_requests is false (supported, not enforced).
+  - id: rfc8705-mtls
+    conforms: true
+    standard: OAuth 2.0 Mutual-TLS Client Authentication and Certificate-Bound Access Tokens
+    evidence: >-
+      tls_client_certificate_bound_access_tokens is true, tls_client_auth is an accepted
+      token endpoint auth method, and mtls_endpoint_aliases are published.
+  - id: rfc8628-device-grant
+    conforms: true
+    evidence: device_authorization_endpoint published and the device_code grant advertised.
+  - id: rfc8693-token-exchange
+    conforms: true
+    evidence: 'grant_types_supported includes urn:ietf:params:oauth:grant-type:token-exchange'
+  - id: rfc7591-dynamic-client-registration
+    conforms: true
+    partial: true
+    evidence: >-
+      registration_endpoint published at
+      /xcloud/auth/realms/xcloud/clients-registrations/openid-connect. Keycloak gates it
+      behind an initial access token, so it is present but not open registration.
+  - id: rfc9101-jar
+    conforms: true
+    evidence: request_parameter_supported and request_object_signing_alg_values_supported published.
+  - id: jarm
+    conforms: true
+    standard: JWT Secured Authorization Response Mode
+    evidence: 'response_modes_supported includes query.jwt, fragment.jwt, form_post.jwt and jwt.'
+  - id: ciba
+    conforms: true
+    standard: OpenID Connect Client Initiated Backchannel Authentication
+    evidence: backchannel_authentication_endpoint and the CIBA grant type are published.
+  - id: dpop
+    conforms: true
+    standard: OAuth 2.0 Demonstrating Proof of Possession (RFC 9449)
+    evidence: dpop_signing_alg_values_supported is published in the discovery document.
+  - id: fapi
+    conforms: false
+    evidence: >-
+      No FAPI claim and no FAPI profile is advertised. The realm still enables the
+      implicit and resource-owner-password grants, which FAPI forbids.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      The Xylem Cloud API error body observed on
+      https://cloud.xylem.com/xcloud/v1/users/ (HTTP 401) is a proprietary envelope
+      ({errorCode, details[], message, timestamp}) served as application/json, not
+      application/problem+json.
+  - id: openapi
+    conforms: false
+    evidence: >-
+      No OpenAPI or Swagger document is served on any Xylem host probed on 2026-09-04 —
+      see review notes in llms/xylem-llms.txt for the full probe list.
+  - id: multispeak
+    conforms: false
+    domain_standard: true
+    market: water and electric utility enterprise integration
+    evidence: >-
+      Not declared. No Xylem-served contract, discovery document or machine-readable
+      surface names MultiSpeak. Recorded as a market-relevant standard that is absent,
+      not as a failure.
+  - id: iec-61968-cim
+    conforms: false
+    domain_standard: true
+    market: utility common information model
+    evidence: Not declared on any reachable Xylem machine-readable surface.
+  - id: ogc-sensorthings
+    conforms: false
+    domain_standard: true
+    market: sensor and water-quality observation data
+    evidence: >-
+      Not declared. No OGC landing page, /conformance document or OWS GetCapabilities
+      response was found on any Xylem host; gis-api-view.xylem.com answers a plain
+      "GIS API is running" welcome page and 404s every OGC and OpenAPI path probed.
+compliance:
+  - program: ISO/IEC 27001
+    status: certified
+    evidence: https://trust.xylem.com/
+  - program: SOC 2 Type II
+    status: claimed
+    evidence: >-
+      https://www.xylem.com/en-us/about/cybersecurity/ — "guided by industry standard
+      frameworks such as NIST CSF, ISO 27001, and SOC 2 Type II".
+  - program: NIST Cybersecurity Framework
+    status: claimed
+    evidence: https://www.xylem.com/en-us/about/cybersecurity/
+  - program: CVE Numbering Authority
+    status: authorized
+    evidence: >-
+      https://www.xylem.com/en-us/about/cybersecurity/incident-response/ — "Xylem is
+      also an approved CVE Numbering Authority (CNA) for its products and technologies."
+  - program: EU Cyber Resilience Act
+    status: aligned
+    evidence: >-
+      https://www.xylem.com/en-us/about/cybersecurity/incident-response/ — PSIRT intake,
+      triage, remediation and disclosure stated to run in alignment with the CRA.
+  - program: ISA Global Cybersecurity Alliance (ISAGCA)
+    status: member
+    evidence: https://www.xylem.com/en-us/about/cybersecurity/
+  - program: WaterISAC
+    status: member
+    evidence: https://www.xylem.com/en-us/about/cybersecurity/incident-response/

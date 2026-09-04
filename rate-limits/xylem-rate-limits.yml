@@ -1,0 +1,36 @@
+generated: '2026-09-04'
+method: probed
+source: >-
+  Live unauthenticated responses from https://cloud.xylem.com/xcloud/v1/users/,
+  https://cloud.xylem.com/xcloud/auth/realms/xcloud/.well-known/openid-configuration and
+  https://ae-api-view.xylem.com/, 2026-09-04.
+note: >-
+  Xylem documents no rate limits for any API, and none of the responses observed on the
+  wire carried a rate-limit header. The response headers on cloud.xylem.com were read in
+  full: content-type, content-length, date, referrer-policy, vary, cache-control, pragma,
+  expires, x-content-type-options, strict-transport-security, x-xss-protection, plus
+  CloudFront's x-cache/via/x-amz-cf-* set. No X-RateLimit-*, no RateLimit-*, no
+  Retry-After. An honest zero, recorded rather than omitted.
+limit_count: 0
+limits: []
+headers:
+  ratelimit_limit: null
+  ratelimit_remaining: null
+  ratelimit_reset: null
+  retry_after: null
+  draft_ratelimit_headers: false
+exhaustion_status: unknown
+exhaustion_note: >-
+  No 429 was provoked and no documentation states what happens on exhaustion. Not
+  asserted.
+evidence:
+  - url: https://cloud.xylem.com/xcloud/v1/users/
+    status: 401
+    finding: No rate-limit headers on the response.
+  - url: https://cloud.xylem.com/xcloud/auth/realms/xcloud/.well-known/openid-configuration
+    status: 200
+    finding: No rate-limit headers on a successful response either.
+gaps:
+  - >-
+    No published limits and no runtime signal. An agent calling a Xylem API cannot pace
+    itself from either the docs or the headers.

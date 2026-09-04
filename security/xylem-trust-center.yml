@@ -1,13 +1,38 @@
-generated: '2026-07-11'
+generated: '2026-09-04'
 method: searched
 probe: true
 source: https://trust.xylem.com/
 url: https://trust.xylem.com/
+platform: SafeBase (trust.xylem.com CNAMEs to xylem.portals.safebase.io)
+access: >-
+  The portal itself is fronted by a Cloudflare interstitial for non-browser clients
+  (HTTP 403 "Just a moment...") and gates document downloads behind an NDA request;
+  the certification list is public.
 certifications:
-- ISO 27001
+  - name: ISO 27001
+    status: certified
+    evidence: https://trust.xylem.com/
+  - name: SOC 2 Type II
+    status: claimed
+    evidence: >-
+      https://www.xylem.com/en-us/about/cybersecurity/ — Xylem states its programme is
+      guided by NIST CSF, ISO 27001 and SOC 2 Type II.
+  - name: NIST Cybersecurity Framework
+    status: claimed
+    evidence: https://www.xylem.com/en-us/about/cybersecurity/
 evidence:
-- source: https://trust.xylem.com/
-  keywords:
-  - iso 27001
-  - iso/iec 27001
-  - trust center
+  - source: https://trust.xylem.com/
+    keywords:
+      - iso 27001
+      - iso/iec 27001
+      - trust center
+  - source: https://www.xylem.com/en-us/about/cybersecurity/
+    keywords:
+      - nist csf
+      - iso 27001
+      - soc 2 type ii
+      - secure by design
+      - isagca
+related:
+  vulnerability_disclosure: security/xylem-vulnerability-disclosure.yml
+  conformance: conformance/xylem-conformance.yml

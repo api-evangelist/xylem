@@ -1,0 +1,113 @@
+generated: '2026-09-04'
+method: probed
+source: https://cloud.xylem.com/xcloud/auth/realms/xcloud/.well-known/openid-configuration
+docs: https://cloud.xylem.com/xcloud/sso/
+note: >-
+  Derived from the ONE machine-readable authentication document Xylem publishes
+  anonymously: the OpenID Connect discovery document for the Xylem Cloud (xCloud)
+  Keycloak realm, fetched HTTP 200 on 2026-09-04 and saved verbatim at
+  well-known/xylem-openid-configuration.json. Xylem publishes no developer-facing
+  authentication guide and no API reference; everything below is read out of the
+  discovery document itself, not out of prose. There is no public API contract to
+  attach these schemes to, so no securityScheme mapping is asserted.
+provider: Xylem
+identity_platform: Keycloak (self-hosted on cloud.xylem.com)
+issuer: https://cloud.xylem.com/xcloud/auth/realms/xcloud
+realm: xcloud
+public_client_hint:
+  source: https://cloud.xylem.com/xcloud/sso/
+  note: >-
+    The Xylem Cloud sign-in page declares its own browser client configuration inline
+    (realm "xcloud", responseType "token id_token", scope "openid email profile") and
+    names a first-party API base of https://cloud.xylem.com/xcloud/v1/users/. That path
+    returns HTTP 401 UNAUTHORIZED_ERROR unauthenticated, confirming a live, token-guarded
+    REST surface behind this issuer.
+schemes:
+  - type: openIdConnect
+    id: xcloud-oidc
+    openIdConnectUrl: https://cloud.xylem.com/xcloud/auth/realms/xcloud/.well-known/openid-configuration
+    description: >-
+      OpenID Connect Discovery 1.0 metadata for the Xylem Cloud realm. Authorization
+      Code, Client Credentials, Refresh Token, Device Code, JWT Bearer, Token Exchange,
+      UMA ticket and CIBA grants are all advertised.
+  - type: oauth2
+    id: xcloud-oauth2-authorization-code
+    flow: authorizationCode
+    authorization_url: https://cloud.xylem.com/xcloud/auth/realms/xcloud/protocol/openid-connect/auth
+    token_url: https://cloud.xylem.com/xcloud/auth/realms/xcloud/protocol/openid-connect/token
+    refresh_url: https://cloud.xylem.com/xcloud/auth/realms/xcloud/protocol/openid-connect/token
+    pkce: true
+    pkce_methods: [S256, plain]
+  - type: oauth2
+    id: xcloud-oauth2-client-credentials
+    flow: clientCredentials
+    token_url: https://cloud.xylem.com/xcloud/auth/realms/xcloud/protocol/openid-connect/token
+    note: >-
+      Machine-to-machine grant is advertised, and a service_account scope is offered —
+      the shape an integration or an agent would use. Client registration is not open:
+      the dynamic registration endpoint requires an initial access token.
+  - type: oauth2
+    id: xcloud-oauth2-device-code
+    flow: deviceCode
+    device_authorization_url: https://cloud.xylem.com/xcloud/auth/realms/xcloud/protocol/openid-connect/auth/device
+    token_url: https://cloud.xylem.com/xcloud/auth/realms/xcloud/protocol/openid-connect/token
+  - type: mutualTLS
+    id: xcloud-mtls
+    note: >-
+      tls_client_certificate_bound_access_tokens is true and tls_client_auth is an
+      accepted token endpoint auth method (RFC 8705). mtls_endpoint_aliases are published.
+endpoints:
+  authorization: https://cloud.xylem.com/xcloud/auth/realms/xcloud/protocol/openid-connect/auth
+  token: https://cloud.xylem.com/xcloud/auth/realms/xcloud/protocol/openid-connect/token
+  userinfo: https://cloud.xylem.com/xcloud/auth/realms/xcloud/protocol/openid-connect/userinfo
+  jwks: https://cloud.xylem.com/xcloud/auth/realms/xcloud/protocol/openid-connect/certs
+  introspection: https://cloud.xylem.com/xcloud/auth/realms/xcloud/protocol/openid-connect/token/introspect
+  revocation: https://cloud.xylem.com/xcloud/auth/realms/xcloud/protocol/openid-connect/revoke
+  end_session: https://cloud.xylem.com/xcloud/auth/realms/xcloud/protocol/openid-connect/logout
+  registration: https://cloud.xylem.com/xcloud/auth/realms/xcloud/clients-registrations/openid-connect
+  pushed_authorization_request: https://cloud.xylem.com/xcloud/auth/realms/xcloud/protocol/openid-connect/ext/par/request
+  backchannel_authentication: https://cloud.xylem.com/xcloud/auth/realms/xcloud/protocol/openid-connect/ext/ciba/auth
+  device_authorization: https://cloud.xylem.com/xcloud/auth/realms/xcloud/protocol/openid-connect/auth/device
+token_endpoint_auth_methods:
+  - private_key_jwt
+  - client_secret_basic
+  - client_secret_post
+  - tls_client_auth
+  - client_secret_jwt
+grant_types:
+  - authorization_code
+  - client_credentials
+  - implicit
+  - password
+  - refresh_token
+  - urn:ietf:params:oauth:grant-type:device_code
+  - urn:ietf:params:oauth:grant-type:jwt-bearer
+  - urn:ietf:params:oauth:grant-type:token-exchange
+  - urn:ietf:params:oauth:grant-type:uma-ticket
+  - urn:openid:params:grant-type:ciba
+token_format: JWT
+id_token_signing_algs: [RS256, RS384, RS512, PS256, PS384, PS512, ES256, ES384, ES512, EdDSA, HS256, HS384, HS512]
+dpop_supported: true
+claims_supported:
+  - iss
+  - sub
+  - aud
+  - exp
+  - iat
+  - auth_time
+  - name
+  - given_name
+  - family_name
+  - preferred_username
+  - email
+  - acr
+  - azp
+  - nonce
+gaps:
+  - No published developer authentication guide, key-issuance page, or API reference.
+  - >-
+    No OpenAPI or other contract to bind these schemes to, so an integrator can obtain a
+    token model from discovery but cannot learn which operations it unlocks.
+  - >-
+    Legacy grants (implicit, resource owner password) remain enabled on the realm
+    alongside the modern ones.

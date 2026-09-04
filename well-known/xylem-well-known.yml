@@ -1,0 +1,174 @@
+generated: '2026-09-04'
+method: probed
+source: >-
+  Live unauthenticated GET of the named /.well-known/ path list on every host this
+  record knows — the registrable domain and www, the Xylem Cloud (xCloud) host, the
+  Apis Manager host, the Xylem Vue service hosts, the trust centre and the status page.
+note: >-
+  One real first-party document was found, and it is not at a root /.well-known/ path.
+  Xylem Cloud runs Keycloak under the /xcloud/auth path prefix, so its OpenID Connect
+  discovery document is served at
+  https://cloud.xylem.com/xcloud/auth/realms/xcloud/.well-known/openid-configuration
+  (HTTP 200, application/json, 6,875 bytes). It is saved verbatim as
+  xylem-openid-configuration.json and is the source for authentication/, scopes/ and
+  conformance/. Every root-level /.well-known/ path on xylem.com and www.xylem.com
+  returns HTTP 404 rendered as the site's branded NotFound page. cloud.xylem.com
+  answers root /.well-known/* with an S3 AccessDenied (403). trust.xylem.com is behind
+  a Cloudflare interstitial (403 "Just a moment...") — a bot challenge, not an absence.
+  The ONE 200 on a root path in this probe is status.xylem.com/.well-known/security.txt,
+  and it is NOT Xylem's: it is Atlassian's Statuspage security.txt (Contact:
+  https://www.atlassian.com/trust/), served by the vendor on a CNAMEd Xylem host. It is
+  recorded here as a vendor document and is deliberately NOT credited to Xylem, and no
+  SecurityTxt pointer is emitted for it.
+hosts:
+  - host: cloud.xylem.com
+    documents:
+      - path: /xcloud/auth/realms/xcloud/.well-known/openid-configuration
+        status: 200
+        file: xylem-openid-configuration.json
+        content_type: application/json
+        first_party: true
+        note: >-
+          Keycloak realm "xcloud" discovery document on Xylem's own domain. issuer
+          https://cloud.xylem.com/xcloud/auth/realms/xcloud.
+      - path: /.well-known/openid-configuration
+        status: 403
+        note: S3 AccessDenied at the host root; the real document is under /xcloud/auth.
+      - path: /.well-known/security.txt
+        status: 403
+      - path: /.well-known/oauth-authorization-server
+        status: 403
+      - path: /.well-known/api-catalog
+        status: 403
+      - path: /.well-known/ai-plugin.json
+        status: 403
+      - path: /.well-known/agent-card.json
+        status: 403
+      - path: /.well-known/agent.json
+        status: 403
+      - path: /llms.txt
+        status: 404
+  - host: xylem.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+      - path: /llms.txt
+        status: 404
+  - host: www.xylem.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+      - path: /llms.txt
+        status: 404
+  - host: apis.xylem.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+      - path: /llms.txt
+        status: 404
+  - host: ae-api-view.xylem.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+      - path: /llms.txt
+        status: 404
+  - host: data-api-view.xylem.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+      - path: /llms.txt
+        status: 404
+  - host: trust.xylem.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 403
+        note: Cloudflare bot challenge ("Just a moment..."), not a recorded absence.
+      - path: /.well-known/openid-configuration
+        status: 403
+      - path: /.well-known/api-catalog
+        status: 403
+      - path: /.well-known/agent-card.json
+        status: 403
+      - path: /.well-known/agent.json
+        status: 403
+  - host: status.xylem.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        first_party: false
+        vendor: Atlassian Statuspage
+        note: >-
+          NOT a Xylem document. This is Atlassian's own RFC 9116 security.txt
+          (Contact https://www.atlassian.com/trust/, PGP-signed by Atlassian) served
+          by Statuspage on Xylem's CNAMEd status host. Not credited to Xylem and no
+          SecurityTxt pointer is emitted from it.
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+      - path: /llms.txt
+        status: 404

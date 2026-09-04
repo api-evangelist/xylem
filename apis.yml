@@ -1,3 +1,4 @@
+name: Xylem
 aid: xylem
 deliveryModel:
   model: unknown
@@ -12,34 +13,101 @@ deliveryModel:
   method: derived
 specificationVersion: '0.23'
 accessModel:
-  pricing: unknown
-  onboarding: unknown
+  pricing: quote-only
+  onboarding: sales
   trial: false
   try_now: false
   public: false
-  label: Unknown
-  confidence: low
-  source: []
-  generated: '2026-07-22'
-  method: derived
+  label: Quote-only, no public plans or self-serve signup
+  confidence: medium
+  source:
+  - https://www.xylem.com/en-us/products--services/software/
+  - plans/xylem-plans-pricing.yml
+  generated: '2026-09-04'
+  method: searched
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/xylem.png
 tags:
   - Fortune 1000
+  - Water
+  - Water Technology
+  - Utilities
+  - Smart Metering
+  - Industrial IoT
+  - Water Quality
+  - Wastewater
+  - Manufacturing
 url: 
   https://raw.githubusercontent.com/api-evangelist/xylem/refs/heads/main/apis.yml
-modified: '2026-03-21'
+created: '2026-03-21'
+modified: '2026-09-04'
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+  - FN: APIs.json
+    email: info@apis.io
 apis: []
 common:
+  - type: Website
+    url: https://www.xylem.com
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/xylem-inc
+  - type: Blog
+    url: https://www.xylem.com/en-us/resources/blogs/making-waves/
+  - type: Support
+    url: https://www.xylem.com/en-us/contact-us/
+  - type: TermsOfService
+    url: https://www.xylem.com/en-us/support/terms-and-conditions/
+  - type: PrivacyPolicy
+    url: https://www.xylem.com/en-us/resources/policies/privacy/
+  - type: Login
+    url: https://cloud.xylem.com/xcloud/sso/
+  - type: StatusPage
+    url: https://status.xylem.com/
+  - type: Security
+    url: security/xylem-vulnerability-disclosure.yml
+  - type: VulnerabilityDisclosure
+    url: security/xylem-vulnerability-disclosure.yml
   - type: TrustCenter
+    url: security/xylem-trust-center.yml
+  - type: Compliance
     url: security/xylem-trust-center.yml
   - type: DomainSecurity
     url: security/xylem-domain-security.yml
-  - type: GitHubOrganization
-    url: https://github.com/Xylem
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/xylem-inc
-  - type: Website
-    url: https://www.xylem.com
+  - type: WellKnown
+    url: well-known/xylem-well-known.yml
+  - type: Authentication
+    url: authentication/xylem-authentication.yml
+  - type: OAuthScopes
+    url: scopes/xylem-scopes.yml
+  - type: Conformance
+    url: conformance/xylem-conformance.yml
+  - type: Conventions
+    url: conventions/xylem-conventions.yml
+  - type: ErrorCatalog
+    url: errors/xylem-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/xylem-lifecycle.yml
+  - type: Packages
+    url: packages/xylem-packages.yml
+  - type: Plans
+    url: plans/xylem-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/xylem-rate-limits.yml
+  - type: LLMsTxt
+    url: llms/xylem-llms.txt
 description: >-
-  Xylem is a leading global water technology company committed to developing innovative
-  technology solutions to the world's water challenges across the full water cycle.
+  Xylem Inc. (NYSE: XYL) is a global water technology company that moves, treats,
+  analyzes, monitors and returns water to the environment across the full water cycle.
+  Its brands include Sensus smart metering and AMI networks, Xylem Vue utility
+  operations software built with Idrica's GoAigua platform, YSI water quality
+  instrumentation, HYPACK hydrographic survey software, and the Flygt, Godwin, WEDECO
+  and Aanderaa product lines. Xylem operates live, first-party API hosts for Xylem
+  Cloud, the Xylem Vue services and its product selector, but publishes no API contract,
+  developer portal or reference for any of them; the one machine-readable document it
+  serves anonymously is the OpenID Connect discovery metadata for the Xylem Cloud
+  identity realm.
+x-enrichment:
+  date: '2026-09-04'
+  status: enriched
+  artifacts_added: 13
+  pass: local-v3

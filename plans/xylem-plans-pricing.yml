@@ -1,0 +1,29 @@
+generated: '2026-09-04'
+method: searched
+source: https://www.xylem.com/en-us/products--services/software/
+note: >-
+  Xylem publishes no plans, tiers or list prices for any product, software or API. It
+  sells through quotation, distributors and utility procurement. Probed on 2026-09-04:
+  https://www.xylem.com/en-us/pricing/ 404, https://www.xylem.com/en-us/plans/ 404,
+  https://www.xylem.com/en-us/products--services/software/pricing/ 404. The software
+  catalogue page (HTTP 200) lists products with "Contact us" and quote-request forms and
+  carries no price, quota, overage or limit anywhere. An honest zero.
+plan_count: 0
+currency: null
+billing_model: quote-only
+public_pricing: false
+free_tier: false
+trial: false
+self_serve_signup: false
+plans: []
+evidence:
+  - url: https://www.xylem.com/en-us/products--services/software/
+    status: 200
+    finding: Product catalogue with quote-request calls to action; no prices listed.
+  - url: https://www.xylem.com/en-us/pricing/
+    status: 404
+  - url: https://www.xylem.com/en-us/plans/
+    status: 404
+  - url: https://www.xylem.com/en-us/contact-us/
+    status: 200
+    finding: Contact/quote is the published route to commercial terms.
