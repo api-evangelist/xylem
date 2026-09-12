@@ -1,0 +1,11 @@
+{
+  "repo": "xylem",
+  "feeds": [
+    {
+      "source": "https://www.linkedin.com/company/xylem-inc",
+      "error": "HTTPError"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-09-06T19:17:18Z"
+}
