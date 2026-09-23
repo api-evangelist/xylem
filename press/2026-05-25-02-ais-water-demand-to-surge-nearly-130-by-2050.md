@@ -1,7 +1,9 @@
 ---
 title: AI's Water Demand to Surge Nearly 130% by 2050
 url: https://www.xylem.com/en-il/about-xylem/newsroom/press-releases/ais-water-demand-to-surge-nearly-130-by-2050--new-research-shows-how-to-build-a-water-secure-ai-economy/
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Xylem" press release artificial intelligence'
 position: 2
 source: serpapi-google

@@ -1,7 +1,9 @@
 ---
 title: 'Reimagining Water Management: Generative AI as a ...'
 url: https://www.bluefieldresearch.com/research/reimagining-water-management-generative-ai-as-a-strategic-utility-asset/
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Xylem" press release artificial intelligence'
 position: 3
 source: serpapi-google

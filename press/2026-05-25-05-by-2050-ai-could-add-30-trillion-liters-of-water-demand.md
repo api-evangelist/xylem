@@ -1,7 +1,9 @@
 ---
 title: By 2050, AI could add 30 trillion liters of water demand ...
 url: https://www.facebook.com/XylemIncorporated/posts/by-2050-ai-could-add-30-trillion-liters-of-water-demand-each-year-that-scale-car/1289921993170804/
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Xylem" press release artificial intelligence'
 position: 5
 source: serpapi-google

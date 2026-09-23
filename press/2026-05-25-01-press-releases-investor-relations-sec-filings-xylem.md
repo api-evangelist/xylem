@@ -1,7 +1,9 @@
 ---
 title: Press Releases | Investor Relations - SEC Filings | Xylem
 url: https://xyleminc.gcs-web.com/news-events/news-releases
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Xylem" press release artificial intelligence'
 position: 1
 source: serpapi-google
