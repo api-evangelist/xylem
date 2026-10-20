@@ -1,0 +1,305 @@
+openapi: 3.2.0
+info:
+  title: Xylem Serial Card API
+  version: v3.5
+  description: 'Operations tagged SerialCard across 2 of this provider''s published API definitions: xylem-apis-dev-swagger.json, xylem-apis-manager-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://apis-dev.xylem.com
+tags:
+- name: SerialCard
+paths:
+  /api/SerialCard/Get/Details:
+    get:
+      tags:
+      - SerialCard
+      summary: Returns matched part details
+      operationId: SerialCard_GetDetails
+      parameters:
+      - name: partNumber
+        in: query
+        description: The part number parameter.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/DataResponse_PartDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/DataResponse_PartDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponse_PartDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DataResponse_PartDetails'
+      security:
+      - Apis Manager: []
+        Bearer: []
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/SerialCard/Get/LnOrderInfo:
+    get:
+      tags:
+      - SerialCard
+      summary: Returns LN order details
+      operationId: SerialCard_GetLnOrderInfo
+      parameters:
+      - name: orderNumber
+        in: query
+        description: The order number search parameter.
+        required: true
+        schema:
+          type: string
+      - name: customerPo
+        in: query
+        description: The customer PO search parameter.
+        required: true
+        schema:
+          type: string
+      - name: configuredItem
+        in: query
+        description: The configured search item.
+        required: true
+        schema:
+          type: string
+      - name: companyNumber
+        in: query
+        description: The company number parameter.
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: environment
+        in: query
+        description: The environment parameter.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/DataResponse_LnOrderDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/DataResponse_LnOrderDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponse_LnOrderDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DataResponse_LnOrderDetails'
+      security:
+      - Apis Manager: []
+        Bearer: []
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/SerialCard/Get/LnItemInfo:
+    get:
+      tags:
+      - SerialCard
+      summary: Returns LN item master details
+      operationId: SerialCard_GetLnItemInfo
+      parameters:
+      - name: itemNumber
+        in: query
+        description: The part number parameter.
+        required: true
+        schema:
+          type: string
+      - name: companyNumber
+        in: query
+        description: The company number parameter.
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: environment
+        in: query
+        description: The environment parameter.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/DataResponse_LnItemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/DataResponse_LnItemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponse_LnItemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DataResponse_LnItemDetails'
+      security:
+      - Apis Manager: []
+        Bearer: []
+    servers:
+    - url: https://apis-dev.xylem.com
+components:
+  schemas:
+    DataResponse_PartDetails:
+      type: object
+      properties:
+        Data:
+          $ref: '#/components/schemas/PartDetails'
+    DataResponse_LnOrderDetails:
+      type: object
+      properties:
+        Data:
+          $ref: '#/components/schemas/LnOrderDetails'
+    LnBomModel:
+      type: object
+      properties:
+        ItemNumber:
+          format: int32
+          type: integer
+        ItemCode:
+          type: string
+        ItemDescription:
+          type: string
+        ProductVariant:
+          format: int32
+          type: integer
+        Quantity:
+          format: double
+          type: number
+    PartText:
+      type: object
+      properties:
+        Feature:
+          type: string
+        Detail:
+          type: string
+        DetailText:
+          type: string
+    LnFeatureModel:
+      type: object
+      properties:
+        FeatureCode:
+          type: string
+        FeatureDetail:
+          type: string
+        DetailDescription:
+          type: string
+    LnLineItemModel:
+      type: object
+      properties:
+        LineNumber:
+          format: int32
+          type: integer
+        ItemCode:
+          type: string
+        ItemDescription:
+          type: string
+        ProductVariant:
+          type: string
+        Invoice:
+          type: string
+        Quantity:
+          format: double
+          type: number
+        Price:
+          format: double
+          type: number
+        ShippedDate:
+          format: date-time
+          type: string
+    PartDetails:
+      type: object
+      properties:
+        PartNumber:
+          type: string
+        Serials:
+          type: array
+          items:
+            $ref: '#/components/schemas/PartSerial'
+        Details:
+          type: array
+          items:
+            $ref: '#/components/schemas/PartText'
+    LnOrderDetails:
+      type: object
+      properties:
+        OrderNumber:
+          type: string
+        CustomerPo:
+          type: string
+        SoldToBusinessPartnerCode:
+          type: string
+        SoldToCustomerName:
+          type: string
+        SoldToAddressCode:
+          type: string
+        ShipToBusinessPartnerCode:
+          type: string
+        ShipToCustomerName:
+          type: string
+        ShipToAddressCode:
+          type: string
+        SalesOffice:
+          type: string
+        OrderType:
+          type: string
+        Status:
+          type: string
+        PriceApprovalNumber:
+          type: string
+        OrderLineItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/LnLineItemModel'
+    DataResponse_LnItemDetails:
+      type: object
+      properties:
+        Data:
+          $ref: '#/components/schemas/LnItemDetails'
+    PartSerial:
+      type: object
+      properties:
+        SerialNumber:
+          type: string
+        Pressure:
+          type: string
+        MotorMfg:
+          type: string
+    LnItemDetails:
+      type: object
+      properties:
+        ItemCode:
+          type: string
+        ItemDescription:
+          type: string
+        ProductVariant:
+          format: int32
+          type: integer
+        ConfigurationFeatures:
+          type: array
+          items:
+            $ref: '#/components/schemas/LnFeatureModel'
+        Bom:
+          type: array
+          items:
+            $ref: '#/components/schemas/LnBomModel'
+  securitySchemes:
+    Apis_Manager:
+      type: oauth2
+      flows:
+        password:
+          scopes: {}
+          tokenUrl: /token
+x-refined-from:
+- xylem-apis-dev-swagger.json
+- xylem-apis-manager-openapi.yml

@@ -1,0 +1,7 @@
+name: Xylem agent skills
+generated: '2026-10-19'
+method: generated
+source: openapi/xylem-apis-manager-openapi.yml
+skills:
+  - name: xylem-mes-order-lookup
+    file: skills/xylem-mes-order-lookup.md

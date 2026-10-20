@@ -1,0 +1,1267 @@
+openapi: 3.2.0
+info:
+  title: Xylem MES API
+  version: v3.5
+  description: 'Operations tagged MES across 2 of this provider''s published API definitions: xylem-apis-dev-swagger.json, xylem-apis-manager-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://apis-dev.xylem.com
+tags:
+- name: MES
+paths:
+  /api/MES/Get/BrazedOrders:
+    get:
+      tags:
+      - MES
+      summary: Returns brazed orders
+      operationId: MES_GetBrazedOrders
+      parameters:
+      - name: page
+        in: query
+        description: The page number parameter.
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: size
+        in: query
+        description: The size parameter indicates the number of records to be returend.
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ResultSet_IList_OrderDetail'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ResultSet_IList_OrderDetail'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultSet_IList_OrderDetail'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResultSet_IList_OrderDetail'
+      security:
+      - Apis Manager: []
+        Bearer: []
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/MES/Get/BrazedOrder:
+    get:
+      tags:
+      - MES
+      summary: Returns brazed order
+      operationId: MES_GetBrazedOrderByOrderNumber
+      parameters:
+      - name: orderNumber
+        in: query
+        description: The order number parameter.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrderDetail'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrderDetail'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrderDetail'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrderDetail'
+      security:
+      - Apis Manager: []
+        Bearer: []
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/MES/Get/BrazedStockParts:
+    get:
+      tags:
+      - MES
+      summary: Returns brazed stock parts
+      operationId: MES_GetBrazedStockParts
+      parameters:
+      - name: page
+        in: query
+        description: The page number parameter.
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: size
+        in: query
+        description: The size parameter indicates the number of records to be returend.
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ResultSet_IList_StockPart'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ResultSet_IList_StockPart'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultSet_IList_StockPart'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResultSet_IList_StockPart'
+      security:
+      - Apis Manager: []
+        Bearer: []
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/MES/Get/BrazedStockPart:
+    get:
+      tags:
+      - MES
+      summary: Returns brazed stock part
+      operationId: MES_GetBrazedStockPartByPartNumber
+      parameters:
+      - name: partNumber
+        in: query
+        description: The part number parameter.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/StockPart'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/StockPart'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StockPart'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/StockPart'
+      security:
+      - Apis Manager: []
+        Bearer: []
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/MES/Get/BrazedRouting:
+    get:
+      tags:
+      - MES
+      summary: Returns brazed routing
+      operationId: MES_GetBrazedRoutingByPartNumber
+      parameters:
+      - name: partNumber
+        in: query
+        description: The part number parameter.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Routing'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Routing'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Routing'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Routing'
+      security:
+      - Apis Manager: []
+        Bearer: []
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/MES/Get/BrazedBOM:
+    get:
+      tags:
+      - MES
+      summary: Returns brazed BOM
+      operationId: MES_GetBrazedBOMByPartNumber
+      parameters:
+      - name: partNumber
+        in: query
+        description: The part number parameter.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BOM'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BOM'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BOM'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BOM'
+      security:
+      - Apis Manager: []
+        Bearer: []
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/MES/Get/BrazedShopOrders:
+    get:
+      tags:
+      - MES
+      summary: Returns brazed shop orders
+      operationId: MES_GetBrazedShopOrders
+      parameters:
+      - name: page
+        in: query
+        description: The page number parameter.
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: size
+        in: query
+        description: The size parameter indicates the number of records to be returend.
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ResultSet_IList_ShopOrder'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ResultSet_IList_ShopOrder'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultSet_IList_ShopOrder'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResultSet_IList_ShopOrder'
+      security:
+      - Apis Manager: []
+        Bearer: []
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/MES/Get/BrazedShopOrdersPart:
+    get:
+      tags:
+      - MES
+      summary: Returns brazed shop orders
+      operationId: MES_GetBrazedShopOrdersByPart
+      parameters:
+      - name: partNumber
+        in: query
+        description: The part number parameter.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ShopOrder'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ShopOrder'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ShopOrder'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ShopOrder'
+      security:
+      - Apis Manager: []
+        Bearer: []
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/MES/Get/BrazedShopOrder:
+    get:
+      tags:
+      - MES
+      summary: Returns brazed shop order
+      operationId: MES_GetBrazedShopOrderByOrderNumber
+      parameters:
+      - name: orderNumber
+        in: query
+        description: The order number parameter.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ShopOrder'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ShopOrder'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShopOrder'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ShopOrder'
+      security:
+      - Apis Manager: []
+        Bearer: []
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/MES/Get/BrazedOrderNotes:
+    get:
+      tags:
+      - MES
+      summary: Returns brazed order notes
+      operationId: MES_GetBrazedOrderNotesByOrderNumber
+      parameters:
+      - name: orderNumber
+        in: query
+        description: The order number parameter.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+            text/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string
+            text/json:
+              schema:
+                type: string
+      security:
+      - Apis Manager: []
+        Bearer: []
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/MES/Get/BrazedNamePlate:
+    post:
+      tags:
+      - MES
+      summary: Returns brazed name plate
+      operationId: MES_GetBrazedNamePlateByOrderNumberLineNumber
+      parameters:
+      - name: orderNumber
+        in: query
+        description: The order number parameter.
+        required: true
+        schema:
+          type: string
+      - name: lineNumber
+        in: query
+        description: The line number parameter.
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/NamePlateLabel'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/NamePlateLabel'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NamePlateLabel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/NamePlateLabel'
+      security:
+      - Apis Manager: []
+        Bearer: []
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/DRS'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/DRS'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DRS'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/DRS'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DRS'
+        description: The drs parameter.
+        required: true
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/MES/Get/BrazedShippingOrders:
+    get:
+      tags:
+      - MES
+      summary: Returns brazed shipping orders
+      operationId: MES_GetBrazedShippingOrders
+      parameters:
+      - name: page
+        in: query
+        description: The page number parameter.
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: size
+        in: query
+        description: The size parameter indicates the number of records to be returend.
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ResultSet_IList_ShippingOrder'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ResultSet_IList_ShippingOrder'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultSet_IList_ShippingOrder'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResultSet_IList_ShippingOrder'
+      security:
+      - Apis Manager: []
+        Bearer: []
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/MES/Create/BrazedShippingOrders:
+    post:
+      tags:
+      - MES
+      summary: Creates and returns list of brazed shipping orders
+      operationId: MES_CreateBrazedShippingOrders
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ResultStatus_IList_ResultStatus_ShippingOrder'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ResultStatus_IList_ResultStatus_ShippingOrder'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultStatus_IList_ResultStatus_ShippingOrder'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResultStatus_IList_ResultStatus_ShippingOrder'
+      security:
+      - Apis Manager: []
+        Bearer: []
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ShippingOrder'
+          text/xml:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ShippingOrder'
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ShippingOrder'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ShippingOrder'
+          application/x-www-form-urlencoded:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ShippingOrder'
+        description: The list of new shipping orders parameter.
+        required: true
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/MES/Create/BrazedShopOrders:
+    post:
+      tags:
+      - MES
+      summary: Creates and returns list of brazed shop orders
+      operationId: MES_CreateBrazedShopOrders
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ResultStatus_IList_ResultStatus_NewShopOrder'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ResultStatus_IList_ResultStatus_NewShopOrder'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultStatus_IList_ResultStatus_NewShopOrder'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResultStatus_IList_ResultStatus_NewShopOrder'
+      security:
+      - Apis Manager: []
+        Bearer: []
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/NewShopOrder'
+          text/xml:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/NewShopOrder'
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/NewShopOrder'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/NewShopOrder'
+          application/x-www-form-urlencoded:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/NewShopOrder'
+        description: The list of new shop orders parameter.
+        required: true
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/MES/Create/BrazedShippingLabels:
+    post:
+      tags:
+      - MES
+      summary: Creates and returns list of brazed shipping labels
+      operationId: MES_CreateBrazedShippingLabels
+      parameters:
+      - name: printer
+        in: query
+        description: The printer name parameter.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ResultStatus_IList_ResultStatus_ShippingLabel'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ResultStatus_IList_ResultStatus_ShippingLabel'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultStatus_IList_ResultStatus_ShippingLabel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResultStatus_IList_ResultStatus_ShippingLabel'
+      security:
+      - Apis Manager: []
+        Bearer: []
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ShippingLabel'
+          text/xml:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ShippingLabel'
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ShippingLabel'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ShippingLabel'
+          application/x-www-form-urlencoded:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ShippingLabel'
+        description: The list of shipping labels parameter.
+        required: true
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/MES/Create/BrazedNamePlateLabels:
+    post:
+      tags:
+      - MES
+      summary: Creates and returns list of brazed name plate labels
+      operationId: MES_CreateBrazedNamePlateLabels
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ResultStatus_IList_ResultStatus_NamePlateLabel'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ResultStatus_IList_ResultStatus_NamePlateLabel'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultStatus_IList_ResultStatus_NamePlateLabel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResultStatus_IList_ResultStatus_NamePlateLabel'
+      security:
+      - Apis Manager: []
+        Bearer: []
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/NamePlateLabel'
+          text/xml:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/NamePlateLabel'
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/NamePlateLabel'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/NamePlateLabel'
+          application/x-www-form-urlencoded:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/NamePlateLabel'
+        description: The list of name plate labels parameter.
+        required: true
+    servers:
+    - url: https://apis-dev.xylem.com
+components:
+  schemas:
+    PlateLayout:
+      type: object
+      properties:
+        PlateMounting:
+          enum:
+          - NotApplicable
+          - Top
+          - Bottom
+          type: string
+        Reversed:
+          type: boolean
+        TopLeft:
+          $ref: '#/components/schemas/Box'
+        TopRight:
+          $ref: '#/components/schemas/Box'
+        BottomLeft:
+          $ref: '#/components/schemas/Box'
+        BottomRight:
+          $ref: '#/components/schemas/Box'
+    ResultStatus_IList_ResultStatus_NewShopOrder:
+      type: object
+      properties:
+        StatusCode:
+          enum:
+          - Success
+          - Warning
+          - Queued
+          - Error
+          - Failed
+          type: string
+        StatusText:
+          type: string
+        Data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResultStatus_NewShopOrder'
+    NamePlateLabel:
+      type: object
+      properties:
+        PlateTitle:
+          type: string
+        PlateType:
+          type: string
+        CompanyName:
+          type: string
+        CompanyType:
+          type: string
+        LabelType:
+          type: string
+        Nikel:
+          type: boolean
+        Serial:
+          type: boolean
+        OrderNumber:
+          type: string
+        LineNumber:
+          format: int32
+          type: integer
+        PartNumber:
+          type: string
+        CustomerPartNumber:
+          type: string
+        DrawingNumber:
+          type: string
+        PurchaseOrder:
+          type: string
+        Model:
+          type: string
+        MaxWorkPressure:
+          type: string
+        MaxTemperature:
+          type: string
+        ExtraInfo:
+          type: string
+        CrnNumber:
+          type: string
+        RecordId:
+          type: string
+        PlateFormat:
+          type: string
+        PlateCount:
+          format: int32
+          type: integer
+        Count:
+          format: int32
+          type: integer
+        PlateLayout:
+          $ref: '#/components/schemas/PlateLayout'
+    ResultSet_IList_OrderDetail:
+      type: object
+      properties:
+        PageNumber:
+          format: int32
+          type: integer
+        PageSize:
+          format: int32
+          type: integer
+        PageCount:
+          format: int32
+          type: integer
+        DataCount:
+          format: int32
+          type: integer
+        Data:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderDetail'
+    ShopOrder:
+      type: object
+      properties:
+        OrderNumber:
+          type: string
+        PartNumber:
+          type: string
+        CustomerNumber:
+          type: string
+        CustomerOrderNumber:
+          type: string
+        CustomerOrderLine:
+          format: int32
+          type: integer
+        ReleaseDate:
+          format: date-time
+          type: string
+        DueDate:
+          format: date-time
+          type: string
+        Status:
+          type: string
+        QuantityRequired:
+          format: double
+          type: number
+        QuantityFinished:
+          format: double
+          type: number
+        Comment:
+          type: string
+        RunHours:
+          format: double
+          type: number
+        SetupHours:
+          format: double
+          type: number
+        MachineHours:
+          format: double
+          type: number
+    StockPart:
+      type: object
+      properties:
+        PartNumber:
+          type: string
+        Description:
+          type: string
+        DrawingNumber:
+          type: string
+        MinBalance:
+          format: double
+          type: number
+        Available:
+          format: double
+          type: number
+        OnHand:
+          format: double
+          type: number
+        CustAlloc:
+          format: double
+          type: number
+        MfgAlloc:
+          format: double
+          type: number
+        OnOrder:
+          format: double
+          type: number
+    ResultStatus_IList_ResultStatus_NamePlateLabel:
+      type: object
+      properties:
+        StatusCode:
+          enum:
+          - Success
+          - Warning
+          - Queued
+          - Error
+          - Failed
+          type: string
+        StatusText:
+          type: string
+        Data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResultStatus_NamePlateLabel'
+    DRS:
+      type: object
+      properties:
+        PRESDESIGN:
+          type: string
+        TEMPMAX:
+          type: string
+        DWGNO:
+          type: string
+        PLATEQUAN:
+          type: string
+        F1FLOW:
+          type: string
+        B1FLOW:
+          type: string
+        F2FLOW:
+          type: string
+        B2FLOW:
+          type: string
+        F3FLOW:
+          type: string
+        B3FLOW:
+          type: string
+        F4FLOW:
+          type: string
+        B4FLOW:
+          type: string
+    ResultStatus_NamePlateLabel:
+      type: object
+      properties:
+        StatusCode:
+          enum:
+          - Success
+          - Warning
+          - Queued
+          - Error
+          - Failed
+          type: string
+        StatusText:
+          type: string
+        Data:
+          $ref: '#/components/schemas/NamePlateLabel'
+    ResultStatus_NewShopOrder:
+      type: object
+      properties:
+        StatusCode:
+          enum:
+          - Success
+          - Warning
+          - Queued
+          - Error
+          - Failed
+          type: string
+        StatusText:
+          type: string
+        Data:
+          $ref: '#/components/schemas/NewShopOrder'
+    ResultSet_IList_ShippingOrder:
+      type: object
+      properties:
+        PageNumber:
+          format: int32
+          type: integer
+        PageSize:
+          format: int32
+          type: integer
+        PageCount:
+          format: int32
+          type: integer
+        DataCount:
+          format: int32
+          type: integer
+        Data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ShippingOrder'
+    ResultStatus_ShippingOrder:
+      type: object
+      properties:
+        StatusCode:
+          enum:
+          - Success
+          - Warning
+          - Queued
+          - Error
+          - Failed
+          type: string
+        StatusText:
+          type: string
+        Data:
+          $ref: '#/components/schemas/ShippingOrder'
+    ResultStatus_ShippingLabel:
+      type: object
+      properties:
+        StatusCode:
+          enum:
+          - Success
+          - Warning
+          - Queued
+          - Error
+          - Failed
+          type: string
+        StatusText:
+          type: string
+        Data:
+          $ref: '#/components/schemas/ShippingLabel'
+    ShippingOrder:
+      type: object
+      properties:
+        OrderNumber:
+          type: string
+        LineNumber:
+          format: int32
+          type: integer
+        PartNumber:
+          type: string
+        Description:
+          type: string
+        Quantity:
+          format: double
+          type: number
+    Box:
+      type: object
+      properties:
+        BoxA:
+          type: string
+        BoxB:
+          type: string
+    NewShopOrder:
+      type: object
+      properties:
+        PartNumber:
+          type: string
+        Quantity:
+          format: double
+          type: number
+        CustomerOrderNumber:
+          type: string
+        CustomerOrderLine:
+          format: int32
+          type: integer
+    BOM:
+      type: object
+      properties:
+        PartNumber:
+          type: string
+        DrawingNumber:
+          type: string
+        Class:
+          type: string
+        Sequence:
+          format: int32
+          type: integer
+        ChildPartNumber:
+          type: string
+        ChildDescription:
+          type: string
+        ChildClass:
+          type: string
+        QuantityRequired:
+          format: double
+          type: number
+        ScrapFactor:
+          format: double
+          type: number
+        Bubble:
+          format: int32
+          type: integer
+        ChildBOM:
+          type: array
+          items:
+            $ref: '#/components/schemas/BOM'
+    ResultStatus_IList_ResultStatus_ShippingLabel:
+      type: object
+      properties:
+        StatusCode:
+          enum:
+          - Success
+          - Warning
+          - Queued
+          - Error
+          - Failed
+          type: string
+        StatusText:
+          type: string
+        Data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResultStatus_ShippingLabel'
+    ResultStatus_IList_ResultStatus_ShippingOrder:
+      type: object
+      properties:
+        StatusCode:
+          enum:
+          - Success
+          - Warning
+          - Queued
+          - Error
+          - Failed
+          type: string
+        StatusText:
+          type: string
+        Data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResultStatus_ShippingOrder'
+    ResultSet_IList_StockPart:
+      type: object
+      properties:
+        PageNumber:
+          format: int32
+          type: integer
+        PageSize:
+          format: int32
+          type: integer
+        PageCount:
+          format: int32
+          type: integer
+        DataCount:
+          format: int32
+          type: integer
+        Data:
+          type: array
+          items:
+            $ref: '#/components/schemas/StockPart'
+    OrderDetail:
+      type: object
+      properties:
+        OrderNumber:
+          type: string
+        LineNumber:
+          format: int32
+          type: integer
+        CustomerName:
+          type: string
+        DueDate:
+          format: date-time
+          type: string
+        ScheduledDate:
+          format: date-time
+          type: string
+        EnteredDate:
+          format: date-time
+          type: string
+        PartNumber:
+          type: string
+        DrawingNumber:
+          type: string
+        Model:
+          type: string
+        Balance:
+          format: double
+          type: number
+        Dollars:
+          format: double
+          type: number
+        Hold:
+          type: string
+        Status:
+          type: string
+        Class:
+          type: string
+    ResultSet_IList_ShopOrder:
+      type: object
+      properties:
+        PageNumber:
+          format: int32
+          type: integer
+        PageSize:
+          format: int32
+          type: integer
+        PageCount:
+          format: int32
+          type: integer
+        DataCount:
+          format: int32
+          type: integer
+        Data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ShopOrder'
+    Routing:
+      type: object
+      properties:
+        PartNumber:
+          type: string
+        WorkCenter:
+          format: int32
+          type: integer
+        Description:
+          type: string
+        BasisCode:
+          type: string
+        RunHours:
+          format: double
+          type: number
+        SetupHours:
+          format: double
+          type: number
+        MachineHours:
+          format: double
+          type: number
+        Operators:
+          format: int32
+          type: integer
+        Tool:
+          type: string
+        MoveDays:
+          format: double
+          type: number
+        QueueDays:
+          format: double
+          type: number
+    ShippingLabel:
+      type: object
+      properties:
+        OrderNumber:
+          type: string
+        LineNumber:
+          format: int32
+          type: integer
+        Count:
+          format: int32
+          type: integer
+        Barcode:
+          type: boolean
+  securitySchemes:
+    Apis_Manager:
+      type: oauth2
+      flows:
+        password:
+          scopes: {}
+          tokenUrl: /token
+x-refined-from:
+- xylem-apis-dev-swagger.json
+- xylem-apis-manager-openapi.yml

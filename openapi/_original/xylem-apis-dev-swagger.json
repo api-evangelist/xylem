@@ -1,0 +1,5394 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "v3.5",
+    "title": "Apis Manager"
+  },
+  "host": "apis-dev.xylem.com",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/api/DocView/Get/DocTypes": {
+      "get": {
+        "tags": [
+          "DocView"
+        ],
+        "summary": "Returns document types.",
+        "operationId": "DocView_GetDocTypes",
+        "consumes": [],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/DocType"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/DocView/Get/DocFields": {
+      "get": {
+        "tags": [
+          "DocView"
+        ],
+        "summary": "Returns document fileds.",
+        "operationId": "DocView_GetDocFields",
+        "consumes": [],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/DocField"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/DocView/Get/DocFields/DocTypeId": {
+      "get": {
+        "tags": [
+          "DocView"
+        ],
+        "summary": "Returns document fileds.",
+        "operationId": "DocView_GetDocFieldsByDocTypeId",
+        "consumes": [],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "docTypeId",
+            "in": "query",
+            "description": "The document type id parameter.",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/DocField"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/DocView/Get/Docs": {
+      "post": {
+        "tags": [
+          "DocView"
+        ],
+        "summary": "Returns documents.",
+        "operationId": "DocView_GetDocs",
+        "consumes": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "docRequest",
+            "in": "body",
+            "description": "The paging, sorting and search parameter.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DocRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/DataTablesResponse[IDictionary[String,Object]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/DocView/Get/Docs/OrderNumber": {
+      "post": {
+        "tags": [
+          "DocView"
+        ],
+        "summary": "Returns documents by sales order number.",
+        "operationId": "DocView_GetDocsByOrderNumber",
+        "consumes": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "docRequest",
+            "in": "body",
+            "description": "The document type id and order number parameter.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DocRequestOrder"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/DataResponse[Object]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/DocView/Get/Docs/Range": {
+      "post": {
+        "tags": [
+          "DocView"
+        ],
+        "summary": "Returns documents by sales order number.",
+        "operationId": "DocView_GetDocsByRange",
+        "consumes": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "docRequest",
+            "in": "body",
+            "description": "The document type id and order number parameter.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DocRequestRange"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/DataResponse[Object]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/DocView/Get/Rep/UserName": {
+      "get": {
+        "tags": [
+          "DocView"
+        ],
+        "summary": "Returns Rep.",
+        "operationId": "DocView_GetRepByUserName",
+        "consumes": [],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "userName",
+            "in": "query",
+            "description": "The username parameter.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/RepInfo"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/Infor/Get": {
+      "post": {
+        "tags": [
+          "Infor"
+        ],
+        "summary": "Returns xml or json response.",
+        "operationId": "Infor_Get",
+        "consumes": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "inforRequest",
+            "in": "body",
+            "description": "The config name, template name and parameters.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InforRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/DataResponse[Object]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/MES/Get/BrazedOrders": {
+      "get": {
+        "tags": [
+          "MES"
+        ],
+        "summary": "Returns brazed orders.",
+        "operationId": "MES_GetBrazedOrders",
+        "consumes": [],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The page number parameter.",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "The size parameter indicates the number of records to be returend.",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResultSet[IList[OrderDetail]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/MES/Get/BrazedOrder": {
+      "get": {
+        "tags": [
+          "MES"
+        ],
+        "summary": "Returns brazed order.",
+        "operationId": "MES_GetBrazedOrderByOrderNumber",
+        "consumes": [],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "orderNumber",
+            "in": "query",
+            "description": "The order number parameter.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/OrderDetail"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/MES/Get/BrazedStockParts": {
+      "get": {
+        "tags": [
+          "MES"
+        ],
+        "summary": "Returns brazed stock parts.",
+        "operationId": "MES_GetBrazedStockParts",
+        "consumes": [],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The page number parameter.",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "The size parameter indicates the number of records to be returend.",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResultSet[IList[StockPart]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/MES/Get/BrazedStockPart": {
+      "get": {
+        "tags": [
+          "MES"
+        ],
+        "summary": "Returns brazed stock part.",
+        "operationId": "MES_GetBrazedStockPartByPartNumber",
+        "consumes": [],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "partNumber",
+            "in": "query",
+            "description": "The part number parameter.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/StockPart"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/MES/Get/BrazedRouting": {
+      "get": {
+        "tags": [
+          "MES"
+        ],
+        "summary": "Returns brazed routing.",
+        "operationId": "MES_GetBrazedRoutingByPartNumber",
+        "consumes": [],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "partNumber",
+            "in": "query",
+            "description": "The part number parameter.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Routing"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/MES/Get/BrazedBOM": {
+      "get": {
+        "tags": [
+          "MES"
+        ],
+        "summary": "Returns brazed BOM.",
+        "operationId": "MES_GetBrazedBOMByPartNumber",
+        "consumes": [],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "partNumber",
+            "in": "query",
+            "description": "The part number parameter.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/BOM"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/MES/Get/BrazedShopOrders": {
+      "get": {
+        "tags": [
+          "MES"
+        ],
+        "summary": "Returns brazed shop orders.",
+        "operationId": "MES_GetBrazedShopOrders",
+        "consumes": [],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The page number parameter.",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "The size parameter indicates the number of records to be returend.",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResultSet[IList[ShopOrder]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/MES/Get/BrazedShopOrdersPart": {
+      "get": {
+        "tags": [
+          "MES"
+        ],
+        "summary": "Returns brazed shop orders.",
+        "operationId": "MES_GetBrazedShopOrdersByPart",
+        "consumes": [],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "partNumber",
+            "in": "query",
+            "description": "The part number parameter.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ShopOrder"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/MES/Get/BrazedShopOrder": {
+      "get": {
+        "tags": [
+          "MES"
+        ],
+        "summary": "Returns brazed shop order.",
+        "operationId": "MES_GetBrazedShopOrderByOrderNumber",
+        "consumes": [],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "orderNumber",
+            "in": "query",
+            "description": "The order number parameter.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ShopOrder"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/MES/Get/BrazedOrderNotes": {
+      "get": {
+        "tags": [
+          "MES"
+        ],
+        "summary": "Returns brazed order notes.",
+        "operationId": "MES_GetBrazedOrderNotesByOrderNumber",
+        "consumes": [],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "orderNumber",
+            "in": "query",
+            "description": "The order number parameter.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/MES/Get/BrazedNamePlate": {
+      "post": {
+        "tags": [
+          "MES"
+        ],
+        "summary": "Returns brazed name plate.",
+        "operationId": "MES_GetBrazedNamePlateByOrderNumberLineNumber",
+        "consumes": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "orderNumber",
+            "in": "query",
+            "description": "The order number parameter.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "lineNumber",
+            "in": "query",
+            "description": "The line number parameter.",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "drs",
+            "in": "body",
+            "description": "The drs parameter.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DRS"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/NamePlateLabel"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/MES/Get/BrazedShippingOrders": {
+      "get": {
+        "tags": [
+          "MES"
+        ],
+        "summary": "Returns brazed shipping orders.",
+        "operationId": "MES_GetBrazedShippingOrders",
+        "consumes": [],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The page number parameter.",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "The size parameter indicates the number of records to be returend.",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResultSet[IList[ShippingOrder]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/MES/Create/BrazedShippingOrders": {
+      "post": {
+        "tags": [
+          "MES"
+        ],
+        "summary": "Creates and returns list of brazed shipping orders.",
+        "operationId": "MES_CreateBrazedShippingOrders",
+        "consumes": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "shippingOrders",
+            "in": "body",
+            "description": "The list of new shipping orders parameter.",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ShippingOrder"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResultStatus[IList[ResultStatus[ShippingOrder]]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/MES/Create/BrazedShopOrders": {
+      "post": {
+        "tags": [
+          "MES"
+        ],
+        "summary": "Creates and returns list of brazed shop orders.",
+        "operationId": "MES_CreateBrazedShopOrders",
+        "consumes": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "shopOrders",
+            "in": "body",
+            "description": "The list of new shop orders parameter.",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/NewShopOrder"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResultStatus[IList[ResultStatus[NewShopOrder]]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/MES/Create/BrazedShippingLabels": {
+      "post": {
+        "tags": [
+          "MES"
+        ],
+        "summary": "Creates and returns list of brazed shipping labels.",
+        "operationId": "MES_CreateBrazedShippingLabels",
+        "consumes": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "printer",
+            "in": "query",
+            "description": "The printer name parameter.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "shippingLabels",
+            "in": "body",
+            "description": "The list of shipping labels parameter.",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ShippingLabel"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResultStatus[IList[ResultStatus[ShippingLabel]]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/MES/Create/BrazedNamePlateLabels": {
+      "post": {
+        "tags": [
+          "MES"
+        ],
+        "summary": "Creates and returns list of brazed name plate labels.",
+        "operationId": "MES_CreateBrazedNamePlateLabels",
+        "consumes": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "namePlateLabels",
+            "in": "body",
+            "description": "The list of name plate labels parameter.",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/NamePlateLabel"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResultStatus[IList[ResultStatus[NamePlateLabel]]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/MES_v2/Get/Orders": {
+      "get": {
+        "tags": [
+          "MES_v2"
+        ],
+        "summary": "Returns orders.",
+        "operationId": "MES_v2_GetOrders",
+        "consumes": [],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The page number parameter.",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "The size parameter indicates the number of records to be returend.",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResultSet_v2[IList[OrderDetail_v2]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/MES_v2/Get/Order": {
+      "get": {
+        "tags": [
+          "MES_v2"
+        ],
+        "summary": "Returns order by order number.",
+        "operationId": "MES_v2_GetOrderByOrderNumber",
+        "consumes": [],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "orderNumber",
+            "in": "query",
+            "description": "The order number parameter.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/OrderDetail_v2"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/MES_v2/Get/OrdersWithBOM": {
+      "get": {
+        "tags": [
+          "MES_v2"
+        ],
+        "summary": "Returns orders with Non-Stock BOM items (optimized single-query version).",
+        "operationId": "MES_v2_GetOrdersWithBOM",
+        "consumes": [],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResultSet_v2[IList[OrderDetail_v2]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/MES_v2/Get/ShopOrders": {
+      "get": {
+        "tags": [
+          "MES_v2"
+        ],
+        "summary": "Returns shop orders.",
+        "operationId": "MES_v2_GetShopOrders",
+        "consumes": [],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The page number parameter.",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "The size parameter indicates the number of records to be returend.",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResultSet_v2[IList[ShopOrder_v2]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/MES_v2/Get/ShopOrdersPart": {
+      "get": {
+        "tags": [
+          "MES_v2"
+        ],
+        "summary": "Returns shop order by part number.",
+        "operationId": "MES_v2_GetShopOrdersByPart",
+        "consumes": [],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "partNumber",
+            "in": "query",
+            "description": "The part number parameter.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ShopOrder_v2"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/MES_v2/Get/ShopOrder": {
+      "get": {
+        "tags": [
+          "MES_v2"
+        ],
+        "summary": "Returns shop order by order number.",
+        "operationId": "MES_v2_GetShopOrderByOrderNumber",
+        "consumes": [],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "orderNumber",
+            "in": "query",
+            "description": "The order number parameter.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ShopOrder_v2"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/MES_v2/Get/PurchaseOrders": {
+      "get": {
+        "tags": [
+          "MES_v2"
+        ],
+        "summary": "Returns purchase orders.",
+        "operationId": "MES_v2_GetPurchaseOrders",
+        "consumes": [],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The page number parameter.",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "The size parameter indicates the number of records to be returend.",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResultSet_v2[IList[PurchaseOrder_v2]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/MES_v2/Get/PurchaseOrdersPart": {
+      "get": {
+        "tags": [
+          "MES_v2"
+        ],
+        "summary": "Returns purchase order by part number.",
+        "operationId": "MES_v2_GetPurchaseOrdersByPart",
+        "consumes": [],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "partNumber",
+            "in": "query",
+            "description": "The part number parameter.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PurchaseOrder_v2"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/MES_v2/Get/PurchaseOrder": {
+      "get": {
+        "tags": [
+          "MES_v2"
+        ],
+        "summary": "Returns purchase order by order number.",
+        "operationId": "MES_v2_GetPurchaseOrderByOrderNumber",
+        "consumes": [],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "orderNumber",
+            "in": "query",
+            "description": "The order number parameter.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PurchaseOrder_v2"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/MES_v2/Get/StockParts": {
+      "get": {
+        "tags": [
+          "MES_v2"
+        ],
+        "summary": "Returns stock parts.",
+        "operationId": "MES_v2_GetStockParts",
+        "consumes": [],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The page number parameter.",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "The size parameter indicates the number of records to be returend.",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResultSet_v2[IList[StockPart_v2]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/MES_v2/Get/StockPart": {
+      "get": {
+        "tags": [
+          "MES_v2"
+        ],
+        "summary": "Returns stock part.",
+        "operationId": "MES_v2_GetStockPartByPartNumber",
+        "consumes": [],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "partNumber",
+            "in": "query",
+            "description": "The part number parameter.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/StockPart_v2"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/MES_v2/Get/PurchasedStockParts": {
+      "get": {
+        "tags": [
+          "MES_v2"
+        ],
+        "summary": "Returns purchased stock parts.",
+        "operationId": "MES_v2_GetPurchasedStockParts",
+        "consumes": [],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The page number parameter.",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "The size parameter indicates the number of records to be returend.",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResultSet_v2[IList[PurchasedStockPart_v2]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/MES_v2/Get/PurchasedStockPart": {
+      "get": {
+        "tags": [
+          "MES_v2"
+        ],
+        "summary": "Returns purchased stock part by part number.",
+        "operationId": "MES_v2_GetPurchasedStockPartByPartNumber",
+        "consumes": [],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "partNumber",
+            "in": "query",
+            "description": "The part number parameter.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/PurchasedStockPart_v2"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/MES_v2/Get/Routing": {
+      "get": {
+        "tags": [
+          "MES_v2"
+        ],
+        "summary": "Returns routing by part number.",
+        "operationId": "MES_v2_GetRoutingByPartNumber",
+        "consumes": [],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "partNumber",
+            "in": "query",
+            "description": "The part number parameter.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Routing_v2"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/MES_v2/Get/BOM": {
+      "get": {
+        "tags": [
+          "MES_v2"
+        ],
+        "summary": "Returns BOM by part number.",
+        "operationId": "MES_v2_GetBOMByPartNumber",
+        "consumes": [],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "partNumber",
+            "in": "query",
+            "description": "The part number parameter.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/BOM_v2"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/MES_v2/Get/OrderBOM": {
+      "get": {
+        "tags": [
+          "MES_v2"
+        ],
+        "summary": "Returns Order BOM by order number.",
+        "operationId": "MES_v2_GetOrderBOMByOrderNumber",
+        "consumes": [],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "orderNumber",
+            "in": "query",
+            "description": "The order number parameter.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "lineNumber",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/OrderBOM_v2"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/MES_v2/Get/OrderRecursiveBOMOrderNumberandLine": {
+      "get": {
+        "tags": [
+          "MES_v2"
+        ],
+        "summary": "8/17/2026\r\n           Returns full recursive Order BOM by order number and line.\r\n           The recursive BOM returns all levels",
+        "operationId": "MES_v2_GetOrderRecursiveBOMByOrderNumberandLine",
+        "consumes": [],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "orderNumber",
+            "in": "query",
+            "description": "The order number parameter.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "lineNumber",
+            "in": "query",
+            "description": "The order number parameter.",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/OrderBOM_v2"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/MES_v2/Create/ShopOrders": {
+      "post": {
+        "tags": [
+          "MES_v2"
+        ],
+        "summary": "Creates and returns list of the shop orders.",
+        "operationId": "MES_v2_CreateShopOrders",
+        "consumes": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "shopOrders",
+            "in": "body",
+            "description": "The list of new shop orders parameter.",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/NewOrder_v2"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResultStatus_v2[IList[ResultStatus_v2[NewOrder_v2]]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/MES_v2/Create/PurchaseOrders": {
+      "post": {
+        "tags": [
+          "MES_v2"
+        ],
+        "summary": "Creates and returns list of the purchase orders.",
+        "operationId": "MES_v2_CreatePurchaseOrders",
+        "consumes": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "purchaseOrders",
+            "in": "body",
+            "description": "The list of new purchase orders parameter.",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/NewOrder_v2"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResultStatus_v2[IList[ResultStatus_v2[NewOrder_v2]]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/MES_v2/Create/ShippingLabels": {
+      "post": {
+        "tags": [
+          "MES_v2"
+        ],
+        "summary": "Creates and returns list of shipping labels.",
+        "operationId": "MES_v2_CreateShippingLabels",
+        "consumes": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "printer",
+            "in": "query",
+            "description": "The printer name parameter.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "shippingLabels",
+            "in": "body",
+            "description": "The list of shipping labels parameter.",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ShippingLabel_v2"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResultStatus_v2[IList[ResultStatus_v2[ShippingLabel_v2]]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/MES_v2/Create/NamePlateLabels": {
+      "post": {
+        "tags": [
+          "MES_v2"
+        ],
+        "summary": "Creates and returns list of name plate labels.",
+        "operationId": "MES_v2_CreateNamePlateLabels",
+        "consumes": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "namePlateLabels",
+            "in": "body",
+            "description": "The list of name plate labels parameter.",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/NamePlateLabel_v2"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResultStatus_v2[IList[ResultStatus_v2[NamePlateLabel_v2]]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/NamePlate/Run/Task": {
+      "get": {
+        "tags": [
+          "NamePlate"
+        ],
+        "summary": "Runs scheduled task.",
+        "operationId": "NamePlate_RunTask",
+        "consumes": [],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "task",
+            "in": "query",
+            "description": "The task name parameter.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResultStatus[Int32]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/NamePlate/Engrave/Queue": {
+      "post": {
+        "tags": [
+          "NamePlate"
+        ],
+        "summary": "Engrave queued nameplate.",
+        "operationId": "NamePlate_EngraveQueue",
+        "consumes": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "description": "The request parameter.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QueueRequest[NamePlateQueue]"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResultStatus[Boolean]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/NamePlate/Engrave/Layout": {
+      "post": {
+        "tags": [
+          "NamePlate"
+        ],
+        "summary": "Returns engrave layout image as base 64 string.",
+        "operationId": "NamePlate_EngraveLayout",
+        "consumes": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "description": "The request parameter.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QueueRequest[NamePlateQueue]"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResultStatus[String]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/NamePlate/Get/Engraved": {
+      "post": {
+        "tags": [
+          "NamePlate"
+        ],
+        "summary": "Returns engraved nameplates.",
+        "operationId": "NamePlate_GetEngraved",
+        "consumes": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "description": "The request parameter.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QueueRequest[NamePlateQueue]"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/DataTablesResponse[NamePlateEngraveQueue]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/NamePlate/Get/Queue": {
+      "post": {
+        "tags": [
+          "NamePlate"
+        ],
+        "summary": "Returns queued nameplates.",
+        "operationId": "NamePlate_GetQueue",
+        "consumes": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "description": "The request parameter.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QueueRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/DataTablesResponse[NamePlateQueue]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/NamePlate/Create/Queue": {
+      "post": {
+        "tags": [
+          "NamePlate"
+        ],
+        "summary": "Creates nameplate queue.",
+        "operationId": "NamePlate_CreateQueue",
+        "consumes": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "description": "The request parameter.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QueueRequest[NamePlateQueue]"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResultStatus[Boolean]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/NamePlate/Delete/Queue": {
+      "post": {
+        "tags": [
+          "NamePlate"
+        ],
+        "summary": "Deletes nameplate queue.",
+        "operationId": "NamePlate_DeleteQueue",
+        "consumes": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "description": "The request parameter.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QueueRequest[NamePlateQueue]"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResultStatus[Boolean]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/NamePlate/ReEngrave/Queue": {
+      "post": {
+        "tags": [
+          "NamePlate"
+        ],
+        "summary": "Sets flagg for queue plate to be reengraved.",
+        "operationId": "NamePlate_ReEngraveQueue",
+        "consumes": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "description": "The request parameter.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QueueRequest[Int32]"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResultStatus[Boolean]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/NamePlate/Get/Authorized/SecurityContent": {
+      "get": {
+        "tags": [
+          "NamePlate"
+        ],
+        "summary": "Returns true if authorized.",
+        "operationId": "NamePlate_GetAuthorizedBySecurityContent",
+        "consumes": [],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "securityContent",
+            "in": "query",
+            "description": "The security content parameter.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/SerialCard/Get/Details": {
+      "get": {
+        "tags": [
+          "SerialCard"
+        ],
+        "summary": "Returns matched part details.",
+        "operationId": "SerialCard_GetDetails",
+        "consumes": [],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "partNumber",
+            "in": "query",
+            "description": "The part number parameter.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/DataResponse[PartDetails]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/SerialCard/Get/LnOrderInfo": {
+      "get": {
+        "tags": [
+          "SerialCard"
+        ],
+        "summary": "Returns LN order details.",
+        "operationId": "SerialCard_GetLnOrderInfo",
+        "consumes": [],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "orderNumber",
+            "in": "query",
+            "description": "The order number search parameter.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "customerPo",
+            "in": "query",
+            "description": "The customer PO search parameter.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "configuredItem",
+            "in": "query",
+            "description": "The configured search item.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "companyNumber",
+            "in": "query",
+            "description": "The company number parameter.",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "environment",
+            "in": "query",
+            "description": "The environment parameter.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/DataResponse[LnOrderDetails]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/SerialCard/Get/LnItemInfo": {
+      "get": {
+        "tags": [
+          "SerialCard"
+        ],
+        "summary": "Returns LN item master details.",
+        "operationId": "SerialCard_GetLnItemInfo",
+        "consumes": [],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "itemNumber",
+            "in": "query",
+            "description": "The part number parameter.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "companyNumber",
+            "in": "query",
+            "description": "The company number parameter.",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "environment",
+            "in": "query",
+            "description": "The environment parameter.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/DataResponse[LnItemDetails]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apis Manager": [],
+            "Bearer": []
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "DocType": {
+      "type": "object",
+      "properties": {
+        "Id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ERPType": {
+          "type": "string"
+        },
+        "DisplayName": {
+          "type": "string"
+        },
+        "DisplayOrder": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Displayed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "DocField": {
+      "type": "object",
+      "properties": {
+        "Id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "TypeId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ERPField": {
+          "type": "string"
+        },
+        "DisplayName": {
+          "type": "string"
+        },
+        "Displayed": {
+          "type": "boolean"
+        },
+        "DisplayOrder": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Filtered": {
+          "type": "boolean"
+        },
+        "Sorted": {
+          "type": "boolean"
+        },
+        "Linked": {
+          "type": "boolean"
+        }
+      }
+    },
+    "DocRequest": {
+      "type": "object",
+      "properties": {
+        "DocUser": {
+          "type": "string"
+        },
+        "DocType": {
+          "type": "string"
+        },
+        "DocData": {
+          "$ref": "#/definitions/DataTablesRequest"
+        }
+      }
+    },
+    "DataTablesRequest": {
+      "type": "object",
+      "properties": {
+        "Start": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Length": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Draw": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Columns": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DataTablesColumn"
+          }
+        },
+        "Order": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DataTablesOrder"
+          }
+        },
+        "Search": {
+          "$ref": "#/definitions/DataTablesSearch"
+        }
+      }
+    },
+    "DataTablesColumn": {
+      "type": "object",
+      "properties": {
+        "Data": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Searchable": {
+          "type": "string"
+        },
+        "Orderable": {
+          "type": "string"
+        },
+        "Search": {
+          "$ref": "#/definitions/DataTablesSearch"
+        }
+      }
+    },
+    "DataTablesOrder": {
+      "type": "object",
+      "properties": {
+        "Column": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Dir": {
+          "type": "string"
+        }
+      }
+    },
+    "DataTablesSearch": {
+      "type": "object",
+      "properties": {
+        "Value": {
+          "type": "string"
+        },
+        "Regex": {
+          "type": "string"
+        }
+      }
+    },
+    "DataTablesResponse[IDictionary[String,Object]]": {
+      "type": "object",
+      "properties": {
+        "Draw": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "RecordsTotal": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "RecordsFiltered": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "DocRequestOrder": {
+      "type": "object",
+      "properties": {
+        "DocTypeId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "OrderNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "DataResponse[Object]": {
+      "type": "object",
+      "properties": {
+        "Data": {
+          "type": "object"
+        }
+      }
+    },
+    "DocRequestRange": {
+      "type": "object",
+      "properties": {
+        "DocTypeId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "BusinessPartners": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "UseDateModified": {
+          "type": "boolean"
+        },
+        "DateFrom": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "DateTo": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "Limit": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Offset": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "RepInfo": {
+      "type": "object",
+      "properties": {
+        "RepType": {
+          "type": "string"
+        },
+        "RepCode": {
+          "type": "string"
+        }
+      }
+    },
+    "InforRequest": {
+      "type": "object",
+      "properties": {
+        "ConfigName": {
+          "type": "string"
+        },
+        "TemplateName": {
+          "type": "string"
+        },
+        "TemplateParameters": {
+          "type": "string"
+        }
+      }
+    },
+    "ResultSet[IList[OrderDetail]]": {
+      "type": "object",
+      "properties": {
+        "PageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PageCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "DataCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrderDetail"
+          }
+        }
+      }
+    },
+    "OrderDetail": {
+      "type": "object",
+      "properties": {
+        "OrderNumber": {
+          "type": "string"
+        },
+        "LineNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "CustomerName": {
+          "type": "string"
+        },
+        "DueDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "ScheduledDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "EnteredDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "PartNumber": {
+          "type": "string"
+        },
+        "DrawingNumber": {
+          "type": "string"
+        },
+        "Model": {
+          "type": "string"
+        },
+        "Balance": {
+          "format": "double",
+          "type": "number"
+        },
+        "Dollars": {
+          "format": "double",
+          "type": "number"
+        },
+        "Hold": {
+          "type": "string"
+        },
+        "Status": {
+          "type": "string"
+        },
+        "Class": {
+          "type": "string"
+        }
+      }
+    },
+    "ResultSet[IList[StockPart]]": {
+      "type": "object",
+      "properties": {
+        "PageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PageCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "DataCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StockPart"
+          }
+        }
+      }
+    },
+    "StockPart": {
+      "type": "object",
+      "properties": {
+        "PartNumber": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "DrawingNumber": {
+          "type": "string"
+        },
+        "MinBalance": {
+          "format": "double",
+          "type": "number"
+        },
+        "Available": {
+          "format": "double",
+          "type": "number"
+        },
+        "OnHand": {
+          "format": "double",
+          "type": "number"
+        },
+        "CustAlloc": {
+          "format": "double",
+          "type": "number"
+        },
+        "MfgAlloc": {
+          "format": "double",
+          "type": "number"
+        },
+        "OnOrder": {
+          "format": "double",
+          "type": "number"
+        }
+      }
+    },
+    "Routing": {
+      "type": "object",
+      "properties": {
+        "PartNumber": {
+          "type": "string"
+        },
+        "WorkCenter": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "BasisCode": {
+          "type": "string"
+        },
+        "RunHours": {
+          "format": "double",
+          "type": "number"
+        },
+        "SetupHours": {
+          "format": "double",
+          "type": "number"
+        },
+        "MachineHours": {
+          "format": "double",
+          "type": "number"
+        },
+        "Operators": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Tool": {
+          "type": "string"
+        },
+        "MoveDays": {
+          "format": "double",
+          "type": "number"
+        },
+        "QueueDays": {
+          "format": "double",
+          "type": "number"
+        }
+      }
+    },
+    "BOM": {
+      "type": "object",
+      "properties": {
+        "PartNumber": {
+          "type": "string"
+        },
+        "DrawingNumber": {
+          "type": "string"
+        },
+        "Class": {
+          "type": "string"
+        },
+        "Sequence": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ChildPartNumber": {
+          "type": "string"
+        },
+        "ChildDescription": {
+          "type": "string"
+        },
+        "ChildClass": {
+          "type": "string"
+        },
+        "QuantityRequired": {
+          "format": "double",
+          "type": "number"
+        },
+        "ScrapFactor": {
+          "format": "double",
+          "type": "number"
+        },
+        "Bubble": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ChildBOM": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BOM"
+          }
+        }
+      }
+    },
+    "ResultSet[IList[ShopOrder]]": {
+      "type": "object",
+      "properties": {
+        "PageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PageCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "DataCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ShopOrder"
+          }
+        }
+      }
+    },
+    "ShopOrder": {
+      "type": "object",
+      "properties": {
+        "OrderNumber": {
+          "type": "string"
+        },
+        "PartNumber": {
+          "type": "string"
+        },
+        "CustomerNumber": {
+          "type": "string"
+        },
+        "CustomerOrderNumber": {
+          "type": "string"
+        },
+        "CustomerOrderLine": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ReleaseDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "DueDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "Status": {
+          "type": "string"
+        },
+        "QuantityRequired": {
+          "format": "double",
+          "type": "number"
+        },
+        "QuantityFinished": {
+          "format": "double",
+          "type": "number"
+        },
+        "Comment": {
+          "type": "string"
+        },
+        "RunHours": {
+          "format": "double",
+          "type": "number"
+        },
+        "SetupHours": {
+          "format": "double",
+          "type": "number"
+        },
+        "MachineHours": {
+          "format": "double",
+          "type": "number"
+        }
+      }
+    },
+    "DRS": {
+      "type": "object",
+      "properties": {
+        "PRESDESIGN": {
+          "type": "string"
+        },
+        "TEMPMAX": {
+          "type": "string"
+        },
+        "DWGNO": {
+          "type": "string"
+        },
+        "PLATEQUAN": {
+          "type": "string"
+        },
+        "F1FLOW": {
+          "type": "string"
+        },
+        "B1FLOW": {
+          "type": "string"
+        },
+        "F2FLOW": {
+          "type": "string"
+        },
+        "B2FLOW": {
+          "type": "string"
+        },
+        "F3FLOW": {
+          "type": "string"
+        },
+        "B3FLOW": {
+          "type": "string"
+        },
+        "F4FLOW": {
+          "type": "string"
+        },
+        "B4FLOW": {
+          "type": "string"
+        }
+      }
+    },
+    "NamePlateLabel": {
+      "type": "object",
+      "properties": {
+        "PlateTitle": {
+          "type": "string"
+        },
+        "PlateType": {
+          "type": "string"
+        },
+        "CompanyName": {
+          "type": "string"
+        },
+        "CompanyType": {
+          "type": "string"
+        },
+        "LabelType": {
+          "type": "string"
+        },
+        "Nikel": {
+          "type": "boolean"
+        },
+        "Serial": {
+          "type": "boolean"
+        },
+        "OrderNumber": {
+          "type": "string"
+        },
+        "LineNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PartNumber": {
+          "type": "string"
+        },
+        "CustomerPartNumber": {
+          "type": "string"
+        },
+        "DrawingNumber": {
+          "type": "string"
+        },
+        "PurchaseOrder": {
+          "type": "string"
+        },
+        "Model": {
+          "type": "string"
+        },
+        "MaxWorkPressure": {
+          "type": "string"
+        },
+        "MaxTemperature": {
+          "type": "string"
+        },
+        "ExtraInfo": {
+          "type": "string"
+        },
+        "CrnNumber": {
+          "type": "string"
+        },
+        "RecordId": {
+          "type": "string"
+        },
+        "PlateFormat": {
+          "type": "string"
+        },
+        "PlateCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Count": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PlateLayout": {
+          "$ref": "#/definitions/PlateLayout"
+        }
+      }
+    },
+    "PlateLayout": {
+      "type": "object",
+      "properties": {
+        "PlateMounting": {
+          "enum": [
+            "NotApplicable",
+            "Top",
+            "Bottom"
+          ],
+          "type": "string"
+        },
+        "Reversed": {
+          "type": "boolean"
+        },
+        "TopLeft": {
+          "$ref": "#/definitions/Box"
+        },
+        "TopRight": {
+          "$ref": "#/definitions/Box"
+        },
+        "BottomLeft": {
+          "$ref": "#/definitions/Box"
+        },
+        "BottomRight": {
+          "$ref": "#/definitions/Box"
+        }
+      }
+    },
+    "Box": {
+      "type": "object",
+      "properties": {
+        "BoxA": {
+          "type": "string"
+        },
+        "BoxB": {
+          "type": "string"
+        }
+      }
+    },
+    "ResultSet[IList[ShippingOrder]]": {
+      "type": "object",
+      "properties": {
+        "PageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PageCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "DataCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ShippingOrder"
+          }
+        }
+      }
+    },
+    "ShippingOrder": {
+      "type": "object",
+      "properties": {
+        "OrderNumber": {
+          "type": "string"
+        },
+        "LineNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PartNumber": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "Quantity": {
+          "format": "double",
+          "type": "number"
+        }
+      }
+    },
+    "ResultStatus[IList[ResultStatus[ShippingOrder]]]": {
+      "type": "object",
+      "properties": {
+        "StatusCode": {
+          "enum": [
+            "Success",
+            "Warning",
+            "Queued",
+            "Error",
+            "Failed"
+          ],
+          "type": "string"
+        },
+        "StatusText": {
+          "type": "string"
+        },
+        "Data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResultStatus[ShippingOrder]"
+          }
+        }
+      }
+    },
+    "ResultStatus[ShippingOrder]": {
+      "type": "object",
+      "properties": {
+        "StatusCode": {
+          "enum": [
+            "Success",
+            "Warning",
+            "Queued",
+            "Error",
+            "Failed"
+          ],
+          "type": "string"
+        },
+        "StatusText": {
+          "type": "string"
+        },
+        "Data": {
+          "$ref": "#/definitions/ShippingOrder"
+        }
+      }
+    },
+    "NewShopOrder": {
+      "type": "object",
+      "properties": {
+        "PartNumber": {
+          "type": "string"
+        },
+        "Quantity": {
+          "format": "double",
+          "type": "number"
+        },
+        "CustomerOrderNumber": {
+          "type": "string"
+        },
+        "CustomerOrderLine": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "ResultStatus[IList[ResultStatus[NewShopOrder]]]": {
+      "type": "object",
+      "properties": {
+        "StatusCode": {
+          "enum": [
+            "Success",
+            "Warning",
+            "Queued",
+            "Error",
+            "Failed"
+          ],
+          "type": "string"
+        },
+        "StatusText": {
+          "type": "string"
+        },
+        "Data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResultStatus[NewShopOrder]"
+          }
+        }
+      }
+    },
+    "ResultStatus[NewShopOrder]": {
+      "type": "object",
+      "properties": {
+        "StatusCode": {
+          "enum": [
+            "Success",
+            "Warning",
+            "Queued",
+            "Error",
+            "Failed"
+          ],
+          "type": "string"
+        },
+        "StatusText": {
+          "type": "string"
+        },
+        "Data": {
+          "$ref": "#/definitions/NewShopOrder"
+        }
+      }
+    },
+    "ShippingLabel": {
+      "type": "object",
+      "properties": {
+        "OrderNumber": {
+          "type": "string"
+        },
+        "LineNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Count": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Barcode": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ResultStatus[IList[ResultStatus[ShippingLabel]]]": {
+      "type": "object",
+      "properties": {
+        "StatusCode": {
+          "enum": [
+            "Success",
+            "Warning",
+            "Queued",
+            "Error",
+            "Failed"
+          ],
+          "type": "string"
+        },
+        "StatusText": {
+          "type": "string"
+        },
+        "Data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResultStatus[ShippingLabel]"
+          }
+        }
+      }
+    },
+    "ResultStatus[ShippingLabel]": {
+      "type": "object",
+      "properties": {
+        "StatusCode": {
+          "enum": [
+            "Success",
+            "Warning",
+            "Queued",
+            "Error",
+            "Failed"
+          ],
+          "type": "string"
+        },
+        "StatusText": {
+          "type": "string"
+        },
+        "Data": {
+          "$ref": "#/definitions/ShippingLabel"
+        }
+      }
+    },
+    "ResultStatus[IList[ResultStatus[NamePlateLabel]]]": {
+      "type": "object",
+      "properties": {
+        "StatusCode": {
+          "enum": [
+            "Success",
+            "Warning",
+            "Queued",
+            "Error",
+            "Failed"
+          ],
+          "type": "string"
+        },
+        "StatusText": {
+          "type": "string"
+        },
+        "Data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResultStatus[NamePlateLabel]"
+          }
+        }
+      }
+    },
+    "ResultStatus[NamePlateLabel]": {
+      "type": "object",
+      "properties": {
+        "StatusCode": {
+          "enum": [
+            "Success",
+            "Warning",
+            "Queued",
+            "Error",
+            "Failed"
+          ],
+          "type": "string"
+        },
+        "StatusText": {
+          "type": "string"
+        },
+        "Data": {
+          "$ref": "#/definitions/NamePlateLabel"
+        }
+      }
+    },
+    "ResultSet_v2[IList[OrderDetail_v2]]": {
+      "type": "object",
+      "properties": {
+        "PageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PageCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "DataCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrderDetail_v2"
+          }
+        }
+      }
+    },
+    "OrderDetail_v2": {
+      "type": "object",
+      "properties": {
+        "OrderNumber": {
+          "type": "string"
+        },
+        "LineNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "CustomerName": {
+          "type": "string"
+        },
+        "DueDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "ScheduledDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "EnteredDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "PartNumber": {
+          "type": "string"
+        },
+        "VendorNumber": {
+          "type": "string"
+        },
+        "DrawingNumber": {
+          "type": "string"
+        },
+        "RevisionLevel": {
+          "type": "string"
+        },
+        "Model": {
+          "type": "string"
+        },
+        "Balance": {
+          "format": "double",
+          "type": "number"
+        },
+        "Dollars": {
+          "format": "double",
+          "type": "number"
+        },
+        "Hold": {
+          "type": "string"
+        },
+        "Status": {
+          "type": "string"
+        },
+        "Class": {
+          "type": "string"
+        },
+        "Type": {
+          "type": "string"
+        },
+        "LeadTime": {
+          "type": "string"
+        },
+        "WorkCenters": {
+          "type": "string"
+        },
+        "NonStockBOM": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrderBOM_v2"
+          }
+        }
+      }
+    },
+    "OrderBOM_v2": {
+      "type": "object",
+      "properties": {
+        "OrderNumber": {
+          "type": "string"
+        },
+        "LineNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "CustomerName": {
+          "type": "string"
+        },
+        "DueDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "ScheduledDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "EnteredDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "ParentPartNumber": {
+          "type": "string"
+        },
+        "PartNumber": {
+          "type": "string"
+        },
+        "VendorNumber": {
+          "type": "string"
+        },
+        "DrawingNumber": {
+          "type": "string"
+        },
+        "RevisionLevel": {
+          "type": "string"
+        },
+        "Model": {
+          "type": "string"
+        },
+        "Balance": {
+          "format": "double",
+          "type": "number"
+        },
+        "Status": {
+          "type": "string"
+        },
+        "Class": {
+          "type": "string"
+        },
+        "Type": {
+          "type": "string"
+        },
+        "Level": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "LeadTime": {
+          "type": "string"
+        },
+        "WorkCenters": {
+          "type": "string"
+        }
+      }
+    },
+    "ResultSet_v2[IList[ShopOrder_v2]]": {
+      "type": "object",
+      "properties": {
+        "PageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PageCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "DataCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ShopOrder_v2"
+          }
+        }
+      }
+    },
+    "ShopOrder_v2": {
+      "type": "object",
+      "properties": {
+        "OrderNumber": {
+          "type": "string"
+        },
+        "PartNumber": {
+          "type": "string"
+        },
+        "CustomerNumber": {
+          "type": "string"
+        },
+        "CustomerOrderNumber": {
+          "type": "string"
+        },
+        "CustomerOrderLine": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ReleaseDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "DueDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "Status": {
+          "type": "string"
+        },
+        "QuantityRequired": {
+          "format": "double",
+          "type": "number"
+        },
+        "QuantityFinished": {
+          "format": "double",
+          "type": "number"
+        },
+        "Comment": {
+          "type": "string"
+        },
+        "RunHours": {
+          "format": "double",
+          "type": "number"
+        },
+        "SetupHours": {
+          "format": "double",
+          "type": "number"
+        },
+        "MachineHours": {
+          "format": "double",
+          "type": "number"
+        },
+        "Class": {
+          "type": "string"
+        },
+        "RevisionLevel": {
+          "type": "string"
+        }
+      }
+    },
+    "ResultSet_v2[IList[PurchaseOrder_v2]]": {
+      "type": "object",
+      "properties": {
+        "PageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PageCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "DataCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PurchaseOrder_v2"
+          }
+        }
+      }
+    },
+    "PurchaseOrder_v2": {
+      "type": "object",
+      "properties": {
+        "OrderNumber": {
+          "type": "string"
+        },
+        "PartNumber": {
+          "type": "string"
+        },
+        "VendorNumber": {
+          "type": "string"
+        },
+        "OperationNumber": {
+          "type": "string"
+        },
+        "CustomerNumber": {
+          "type": "string"
+        },
+        "CustomerOrderNumber": {
+          "type": "string"
+        },
+        "CustomerOrderLine": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "EnteredDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "DueDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "QuantityOrdered": {
+          "format": "double",
+          "type": "number"
+        },
+        "QuantityReceived": {
+          "format": "double",
+          "type": "number"
+        },
+        "Comment": {
+          "type": "string"
+        },
+        "Class": {
+          "type": "string"
+        },
+        "LeadTime": {
+          "type": "string"
+        }
+      }
+    },
+    "ResultSet_v2[IList[StockPart_v2]]": {
+      "type": "object",
+      "properties": {
+        "PageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PageCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "DataCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StockPart_v2"
+          }
+        }
+      }
+    },
+    "StockPart_v2": {
+      "type": "object",
+      "properties": {
+        "PartNumber": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "VendorNumber": {
+          "type": "string"
+        },
+        "DrawingNumber": {
+          "type": "string"
+        },
+        "RevisionLevel": {
+          "type": "string"
+        },
+        "LeadDays": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "MinBalance": {
+          "format": "double",
+          "type": "number"
+        },
+        "Available": {
+          "format": "double",
+          "type": "number"
+        },
+        "OnHand": {
+          "format": "double",
+          "type": "number"
+        },
+        "CustAlloc": {
+          "format": "double",
+          "type": "number"
+        },
+        "MfgAlloc": {
+          "format": "double",
+          "type": "number"
+        },
+        "OnOrder": {
+          "format": "double",
+          "type": "number"
+        },
+        "Class": {
+          "type": "string"
+        },
+        "AvgUsage": {
+          "format": "double",
+          "type": "number"
+        },
+        "UsageMonth1": {
+          "format": "double",
+          "type": "number"
+        },
+        "UsageMonth2": {
+          "format": "double",
+          "type": "number"
+        },
+        "UsageMonth3": {
+          "format": "double",
+          "type": "number"
+        },
+        "UsageMonth4": {
+          "format": "double",
+          "type": "number"
+        },
+        "UsageMonth5": {
+          "format": "double",
+          "type": "number"
+        },
+        "UsageMonth6": {
+          "format": "double",
+          "type": "number"
+        },
+        "UsageMonth7": {
+          "format": "double",
+          "type": "number"
+        },
+        "UsageMonth8": {
+          "format": "double",
+          "type": "number"
+        },
+        "UsageMonth9": {
+          "format": "double",
+          "type": "number"
+        },
+        "UsageMonth10": {
+          "format": "double",
+          "type": "number"
+        },
+        "UsageMonth11": {
+          "format": "double",
+          "type": "number"
+        },
+        "UsageMonth12": {
+          "format": "double",
+          "type": "number"
+        }
+      }
+    },
+    "ResultSet_v2[IList[PurchasedStockPart_v2]]": {
+      "type": "object",
+      "properties": {
+        "PageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PageCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "DataCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PurchasedStockPart_v2"
+          }
+        }
+      }
+    },
+    "PurchasedStockPart_v2": {
+      "type": "object",
+      "properties": {
+        "PartNumber": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "VendorNumber": {
+          "type": "string"
+        },
+        "DrawingNumber": {
+          "type": "string"
+        },
+        "RevisionLevel": {
+          "type": "string"
+        },
+        "LeadDays": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "MinBalance": {
+          "format": "double",
+          "type": "number"
+        },
+        "Available": {
+          "format": "double",
+          "type": "number"
+        },
+        "OnHand": {
+          "format": "double",
+          "type": "number"
+        },
+        "CustAlloc": {
+          "format": "double",
+          "type": "number"
+        },
+        "MfgAlloc": {
+          "format": "double",
+          "type": "number"
+        },
+        "OnOrder": {
+          "format": "double",
+          "type": "number"
+        },
+        "Class": {
+          "type": "string"
+        },
+        "AvgUsage": {
+          "format": "double",
+          "type": "number"
+        },
+        "UsageMonth1": {
+          "format": "double",
+          "type": "number"
+        },
+        "UsageMonth2": {
+          "format": "double",
+          "type": "number"
+        },
+        "UsageMonth3": {
+          "format": "double",
+          "type": "number"
+        },
+        "UsageMonth4": {
+          "format": "double",
+          "type": "number"
+        },
+        "UsageMonth5": {
+          "format": "double",
+          "type": "number"
+        },
+        "UsageMonth6": {
+          "format": "double",
+          "type": "number"
+        },
+        "UsageMonth7": {
+          "format": "double",
+          "type": "number"
+        },
+        "UsageMonth8": {
+          "format": "double",
+          "type": "number"
+        },
+        "UsageMonth9": {
+          "format": "double",
+          "type": "number"
+        },
+        "UsageMonth10": {
+          "format": "double",
+          "type": "number"
+        },
+        "UsageMonth11": {
+          "format": "double",
+          "type": "number"
+        },
+        "UsageMonth12": {
+          "format": "double",
+          "type": "number"
+        }
+      }
+    },
+    "Routing_v2": {
+      "type": "object",
+      "properties": {
+        "PartNumber": {
+          "type": "string"
+        },
+        "OperationNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "WorkCenter": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "BasisCode": {
+          "type": "string"
+        },
+        "RunHours": {
+          "format": "double",
+          "type": "number"
+        },
+        "SetupHours": {
+          "format": "double",
+          "type": "number"
+        },
+        "MachineHours": {
+          "format": "double",
+          "type": "number"
+        },
+        "Operators": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Tool": {
+          "type": "string"
+        },
+        "MoveDays": {
+          "format": "double",
+          "type": "number"
+        },
+        "QueueDays": {
+          "format": "double",
+          "type": "number"
+        }
+      }
+    },
+    "BOM_v2": {
+      "type": "object",
+      "properties": {
+        "ParentPartNumber": {
+          "type": "string"
+        },
+        "PartNumber": {
+          "type": "string"
+        },
+        "VendorNumber": {
+          "type": "string"
+        },
+        "DrawingNumber": {
+          "type": "string"
+        },
+        "RevisionLevel": {
+          "type": "string"
+        },
+        "Sequence": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Model": {
+          "type": "string"
+        },
+        "QuantityRequired": {
+          "format": "double",
+          "type": "number"
+        },
+        "Class": {
+          "type": "string"
+        },
+        "Type": {
+          "type": "string"
+        },
+        "Level": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "NewOrder_v2": {
+      "type": "object",
+      "properties": {
+        "PartNumber": {
+          "type": "string"
+        },
+        "Quantity": {
+          "format": "double",
+          "type": "number"
+        },
+        "CustomerOrderNumber": {
+          "type": "string"
+        },
+        "CustomerOrderLine": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ReleaseDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "NCRComments": {
+          "type": "string"
+        }
+      }
+    },
+    "ResultStatus_v2[IList[ResultStatus_v2[NewOrder_v2]]]": {
+      "type": "object",
+      "properties": {
+        "StatusCode": {
+          "enum": [
+            "Success",
+            "Warning",
+            "Queued",
+            "Error",
+            "Failed"
+          ],
+          "type": "string"
+        },
+        "StatusText": {
+          "type": "string"
+        },
+        "Data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResultStatus_v2[NewOrder_v2]"
+          }
+        }
+      }
+    },
+    "ResultStatus_v2[NewOrder_v2]": {
+      "type": "object",
+      "properties": {
+        "StatusCode": {
+          "enum": [
+            "Success",
+            "Warning",
+            "Queued",
+            "Error",
+            "Failed"
+          ],
+          "type": "string"
+        },
+        "StatusText": {
+          "type": "string"
+        },
+        "Data": {
+          "$ref": "#/definitions/NewOrder_v2"
+        }
+      }
+    },
+    "ShippingLabel_v2": {
+      "type": "object",
+      "properties": {
+        "OrderNumber": {
+          "type": "string"
+        },
+        "LineNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Count": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Barcode": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ResultStatus_v2[IList[ResultStatus_v2[ShippingLabel_v2]]]": {
+      "type": "object",
+      "properties": {
+        "StatusCode": {
+          "enum": [
+            "Success",
+            "Warning",
+            "Queued",
+            "Error",
+            "Failed"
+          ],
+          "type": "string"
+        },
+        "StatusText": {
+          "type": "string"
+        },
+        "Data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResultStatus_v2[ShippingLabel_v2]"
+          }
+        }
+      }
+    },
+    "ResultStatus_v2[ShippingLabel_v2]": {
+      "type": "object",
+      "properties": {
+        "StatusCode": {
+          "enum": [
+            "Success",
+            "Warning",
+            "Queued",
+            "Error",
+            "Failed"
+          ],
+          "type": "string"
+        },
+        "StatusText": {
+          "type": "string"
+        },
+        "Data": {
+          "$ref": "#/definitions/ShippingLabel_v2"
+        }
+      }
+    },
+    "NamePlateLabel_v2": {
+      "type": "object",
+      "properties": {
+        "PlateTitle": {
+          "type": "string"
+        },
+        "PlateType": {
+          "type": "string"
+        },
+        "CompanyName": {
+          "type": "string"
+        },
+        "CompanyType": {
+          "type": "string"
+        },
+        "LabelType": {
+          "type": "string"
+        },
+        "Nikel": {
+          "type": "boolean"
+        },
+        "Serial": {
+          "type": "boolean"
+        },
+        "OrderNumber": {
+          "type": "string"
+        },
+        "LineNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PartNumber": {
+          "type": "string"
+        },
+        "CustomerPartNumber": {
+          "type": "string"
+        },
+        "DrawingNumber": {
+          "type": "string"
+        },
+        "PurchaseOrder": {
+          "type": "string"
+        },
+        "Model": {
+          "type": "string"
+        },
+        "MaxWorkPressure": {
+          "type": "string"
+        },
+        "MaxTemperature": {
+          "type": "string"
+        },
+        "ExtraInfo": {
+          "type": "string"
+        },
+        "CrnNumber": {
+          "type": "string"
+        },
+        "RecordId": {
+          "type": "string"
+        },
+        "PlateFormat": {
+          "type": "string"
+        },
+        "PlateCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Count": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PlateLayout": {
+          "$ref": "#/definitions/PlateLayout_v2"
+        }
+      }
+    },
+    "PlateLayout_v2": {
+      "type": "object",
+      "properties": {
+        "PlateMounting": {
+          "enum": [
+            "NotApplicable",
+            "Top",
+            "Bottom"
+          ],
+          "type": "string"
+        },
+        "Reversed": {
+          "type": "boolean"
+        },
+        "TopLeft": {
+          "$ref": "#/definitions/Box_v2"
+        },
+        "TopRight": {
+          "$ref": "#/definitions/Box_v2"
+        },
+        "BottomLeft": {
+          "$ref": "#/definitions/Box_v2"
+        },
+        "BottomRight": {
+          "$ref": "#/definitions/Box_v2"
+        }
+      }
+    },
+    "Box_v2": {
+      "type": "object",
+      "properties": {
+        "BoxA": {
+          "type": "string"
+        },
+        "BoxB": {
+          "type": "string"
+        }
+      }
+    },
+    "ResultStatus_v2[IList[ResultStatus_v2[NamePlateLabel_v2]]]": {
+      "type": "object",
+      "properties": {
+        "StatusCode": {
+          "enum": [
+            "Success",
+            "Warning",
+            "Queued",
+            "Error",
+            "Failed"
+          ],
+          "type": "string"
+        },
+        "StatusText": {
+          "type": "string"
+        },
+        "Data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResultStatus_v2[NamePlateLabel_v2]"
+          }
+        }
+      }
+    },
+    "ResultStatus_v2[NamePlateLabel_v2]": {
+      "type": "object",
+      "properties": {
+        "StatusCode": {
+          "enum": [
+            "Success",
+            "Warning",
+            "Queued",
+            "Error",
+            "Failed"
+          ],
+          "type": "string"
+        },
+        "StatusText": {
+          "type": "string"
+        },
+        "Data": {
+          "$ref": "#/definitions/NamePlateLabel_v2"
+        }
+      }
+    },
+    "ResultStatus[Int32]": {
+      "type": "object",
+      "properties": {
+        "StatusCode": {
+          "enum": [
+            "Success",
+            "Warning",
+            "Queued",
+            "Error",
+            "Failed"
+          ],
+          "type": "string"
+        },
+        "StatusText": {
+          "type": "string"
+        },
+        "Content": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "QueueRequest[NamePlateQueue]": {
+      "type": "object",
+      "properties": {
+        "User": {
+          "type": "string"
+        },
+        "SecurityContent": {
+          "type": "string"
+        },
+        "Content": {
+          "$ref": "#/definitions/NamePlateQueue"
+        }
+      }
+    },
+    "NamePlateQueue": {
+      "type": "object",
+      "properties": {
+        "PartNumber": {
+          "type": "string"
+        },
+        "OrderNumber": {
+          "type": "string"
+        },
+        "NamePlate": {
+          "type": "string"
+        },
+        "Quantity": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Horizontal": {
+          "type": "boolean"
+        },
+        "ForceReQueue": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ResultStatus[Boolean]": {
+      "type": "object",
+      "properties": {
+        "StatusCode": {
+          "enum": [
+            "Success",
+            "Warning",
+            "Queued",
+            "Error",
+            "Failed"
+          ],
+          "type": "string"
+        },
+        "StatusText": {
+          "type": "string"
+        },
+        "Content": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ResultStatus[String]": {
+      "type": "object",
+      "properties": {
+        "StatusCode": {
+          "enum": [
+            "Success",
+            "Warning",
+            "Queued",
+            "Error",
+            "Failed"
+          ],
+          "type": "string"
+        },
+        "StatusText": {
+          "type": "string"
+        },
+        "Content": {
+          "type": "string"
+        }
+      }
+    },
+    "DataTablesResponse[NamePlateEngraveQueue]": {
+      "type": "object",
+      "properties": {
+        "Draw": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "RecordsTotal": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "RecordsFiltered": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NamePlateEngraveQueue"
+          }
+        }
+      }
+    },
+    "NamePlateEngraveQueue": {
+      "type": "object",
+      "properties": {
+        "PlateNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "OrderNumber": {
+          "type": "string"
+        },
+        "SalesOrderNumber": {
+          "type": "string"
+        },
+        "SalesOrderLine": {
+          "type": "string"
+        },
+        "Item": {
+          "type": "string"
+        },
+        "PumpNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "NamePlate": {
+          "type": "string"
+        },
+        "NPDepartment": {
+          "type": "string"
+        },
+        "ASMDepartment": {
+          "type": "string"
+        },
+        "NpType": {
+          "type": "string"
+        },
+        "StockPart": {
+          "type": "boolean"
+        },
+        "FirePump": {
+          "type": "boolean"
+        },
+        "FM": {
+          "type": "boolean"
+        },
+        "Approval_Code": {
+          "type": "string"
+        },
+        "Approval_Authorities": {
+          "type": "string"
+        },
+        "BEP_EFF": {
+          "type": "string"
+        },
+        "BRAND": {
+          "type": "string"
+        },
+        "CAPACITY": {
+          "type": "string"
+        },
+        "ControllerHz": {
+          "type": "string"
+        },
+        "ControllerPhase": {
+          "type": "string"
+        },
+        "ControllerVolts": {
+          "type": "string"
+        },
+        "DATECODE": {
+          "type": "string"
+        },
+        "DRAWING1": {
+          "type": "string"
+        },
+        "DRAWING2": {
+          "type": "string"
+        },
+        "DRAWING3": {
+          "type": "string"
+        },
+        "DRAWING4": {
+          "type": "string"
+        },
+        "ENGINE": {
+          "type": "string"
+        },
+        "FLA": {
+          "format": "double",
+          "type": "number"
+        },
+        "BearingFrame": {
+          "type": "string"
+        },
+        "FtHd": {
+          "type": "string"
+        },
+        "Lube": {
+          "type": "string"
+        },
+        "Motor_Power": {
+          "type": "string"
+        },
+        "HPatFlow": {
+          "type": "string"
+        },
+        "HZ": {
+          "type": "string"
+        },
+        "Impeller_Diameter": {
+          "type": "string"
+        },
+        "Imp_Full_Dia": {
+          "type": "string"
+        },
+        "Imp_Trim_Dia": {
+          "type": "string"
+        },
+        "InbdBrg": {
+          "type": "string"
+        },
+        "InnerBearing": {
+          "type": "string"
+        },
+        "InletSize": {
+          "type": "string"
+        },
+        "LMFLA": {
+          "type": "string"
+        },
+        "ManuC": {
+          "type": "string"
+        },
+        "ManuD": {
+          "type": "string"
+        },
+        "Materials_of_Construction": {
+          "type": "string"
+        },
+        "MaxHP": {
+          "type": "string"
+        },
+        "MaxPosSuctionPressure": {
+          "type": "string"
+        },
+        "Max_Suction_Pressure": {
+          "type": "string"
+        },
+        "MHP": {
+          "type": "string"
+        },
+        "MODEL": {
+          "type": "string"
+        },
+        "MODELNUMBER": {
+          "type": "string"
+        },
+        "MODELNUMBER2": {
+          "type": "string"
+        },
+        "MWP": {
+          "type": "string"
+        },
+        "Oper_LBS": {
+          "type": "string"
+        },
+        "OutbdBrg": {
+          "type": "string"
+        },
+        "OuterBearing": {
+          "type": "string"
+        },
+        "P1_HP": {
+          "type": "string"
+        },
+        "P1_Hz": {
+          "type": "string"
+        },
+        "P1_Volts": {
+          "type": "string"
+        },
+        "P2_HP": {
+          "type": "string"
+        },
+        "P2_Hz": {
+          "type": "string"
+        },
+        "P2_Volts": {
+          "type": "string"
+        },
+        "PEI": {
+          "type": "string"
+        },
+        "PEI_CL": {
+          "type": "string"
+        },
+        "PHASE": {
+          "type": "string"
+        },
+        "PumpHz": {
+          "type": "string"
+        },
+        "PMPLABL": {
+          "type": "string"
+        },
+        "PumpPhase": {
+          "type": "string"
+        },
+        "Pressure150": {
+          "type": "string"
+        },
+        "ProductGroup": {
+          "type": "string"
+        },
+        "PumpCode": {
+          "type": "string"
+        },
+        "PumpDescription": {
+          "type": "string"
+        },
+        "Rated_Head": {
+          "type": "string"
+        },
+        "Pump_Size": {
+          "type": "string"
+        },
+        "Pump_Type": {
+          "type": "string"
+        },
+        "PumpVolts": {
+          "type": "string"
+        },
+        "Rated_Flow": {
+          "type": "string"
+        },
+        "Rated_Pressure": {
+          "type": "string"
+        },
+        "RatedFlow": {
+          "type": "string"
+        },
+        "RatedPSI": {
+          "type": "string"
+        },
+        "RatedSpeed": {
+          "type": "string"
+        },
+        "Pump_Rotation": {
+          "type": "string"
+        },
+        "SCCkA": {
+          "type": "string"
+        },
+        "SCCV": {
+          "type": "string"
+        },
+        "SEAL": {
+          "type": "string"
+        },
+        "SERIAL": {
+          "type": "string"
+        },
+        "SerialC": {
+          "type": "string"
+        },
+        "SerialD": {
+          "type": "string"
+        },
+        "SERIALNUMBER": {
+          "type": "string"
+        },
+        "SERIES": {
+          "type": "string"
+        },
+        "ShutoffHead": {
+          "type": "string"
+        },
+        "Smart_PN": {
+          "type": "string"
+        },
+        "Motor_Speed": {
+          "type": "string"
+        },
+        "SPEC": {
+          "type": "string"
+        },
+        "Stages": {
+          "type": "string"
+        },
+        "Temp_Max_F": {
+          "type": "string"
+        },
+        "Temp_Min_F": {
+          "type": "string"
+        },
+        "TFLA": {
+          "type": "string"
+        },
+        "NP_TextLine1": {
+          "type": "string"
+        },
+        "NP_TextLine2": {
+          "type": "string"
+        },
+        "NP_TextLine3": {
+          "type": "string"
+        },
+        "NP_TextLine4": {
+          "type": "string"
+        },
+        "NP_TextLine5": {
+          "type": "string"
+        },
+        "VOLTS": {
+          "type": "string"
+        },
+        "WEIGHT": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Working_Pressure": {
+          "type": "string"
+        },
+        "YEAR": {
+          "type": "string"
+        },
+        "YEARMONTH": {
+          "type": "string"
+        },
+        "Pump_Size_Designation": {
+          "type": "string"
+        },
+        "RecordInsertBy": {
+          "type": "string"
+        },
+        "RecordInsertDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "UpdatedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "UpdatedBy": {
+          "type": "string"
+        },
+        "UpdateTableName": {
+          "type": "string"
+        },
+        "Deleted": {
+          "type": "boolean"
+        },
+        "DeletedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "DeletedBy": {
+          "type": "string"
+        },
+        "Engraved": {
+          "type": "boolean"
+        },
+        "EngravedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "EngravedBy": {
+          "type": "string"
+        },
+        "OrderCompleted": {
+          "type": "boolean"
+        },
+        "CompletedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "CompletedBy": {
+          "type": "string"
+        },
+        "ReEngrave": {
+          "type": "boolean"
+        },
+        "ReEngraveDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "MFG_Facility_Loc": {
+          "type": "string"
+        },
+        "Station": {
+          "type": "string"
+        },
+        "Scriber": {
+          "type": "string"
+        }
+      }
+    },
+    "QueueRequest": {
+      "type": "object",
+      "properties": {
+        "User": {
+          "type": "string"
+        },
+        "SecurityContent": {
+          "type": "string"
+        }
+      }
+    },
+    "DataTablesResponse[NamePlateQueue]": {
+      "type": "object",
+      "properties": {
+        "Draw": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "RecordsTotal": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "RecordsFiltered": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NamePlateQueue"
+          }
+        }
+      }
+    },
+    "QueueRequest[Int32]": {
+      "type": "object",
+      "properties": {
+        "User": {
+          "type": "string"
+        },
+        "SecurityContent": {
+          "type": "string"
+        },
+        "Content": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "DataResponse[PartDetails]": {
+      "type": "object",
+      "properties": {
+        "Data": {
+          "$ref": "#/definitions/PartDetails"
+        }
+      }
+    },
+    "PartDetails": {
+      "type": "object",
+      "properties": {
+        "PartNumber": {
+          "type": "string"
+        },
+        "Serials": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartSerial"
+          }
+        },
+        "Details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartText"
+          }
+        }
+      }
+    },
+    "PartSerial": {
+      "type": "object",
+      "properties": {
+        "SerialNumber": {
+          "type": "string"
+        },
+        "Pressure": {
+          "type": "string"
+        },
+        "MotorMfg": {
+          "type": "string"
+        }
+      }
+    },
+    "PartText": {
+      "type": "object",
+      "properties": {
+        "Feature": {
+          "type": "string"
+        },
+        "Detail": {
+          "type": "string"
+        },
+        "DetailText": {
+          "type": "string"
+        }
+      }
+    },
+    "DataResponse[LnOrderDetails]": {
+      "type": "object",
+      "properties": {
+        "Data": {
+          "$ref": "#/definitions/LnOrderDetails"
+        }
+      }
+    },
+    "LnOrderDetails": {
+      "type": "object",
+      "properties": {
+        "OrderNumber": {
+          "type": "string"
+        },
+        "CustomerPo": {
+          "type": "string"
+        },
+        "SoldToBusinessPartnerCode": {
+          "type": "string"
+        },
+        "SoldToCustomerName": {
+          "type": "string"
+        },
+        "SoldToAddressCode": {
+          "type": "string"
+        },
+        "ShipToBusinessPartnerCode": {
+          "type": "string"
+        },
+        "ShipToCustomerName": {
+          "type": "string"
+        },
+        "ShipToAddressCode": {
+          "type": "string"
+        },
+        "SalesOffice": {
+          "type": "string"
+        },
+        "OrderType": {
+          "type": "string"
+        },
+        "Status": {
+          "type": "string"
+        },
+        "PriceApprovalNumber": {
+          "type": "string"
+        },
+        "OrderLineItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LnLineItemModel"
+          }
+        }
+      }
+    },
+    "LnLineItemModel": {
+      "type": "object",
+      "properties": {
+        "LineNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ItemCode": {
+          "type": "string"
+        },
+        "ItemDescription": {
+          "type": "string"
+        },
+        "ProductVariant": {
+          "type": "string"
+        },
+        "Invoice": {
+          "type": "string"
+        },
+        "Quantity": {
+          "format": "double",
+          "type": "number"
+        },
+        "Price": {
+          "format": "double",
+          "type": "number"
+        },
+        "ShippedDate": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "DataResponse[LnItemDetails]": {
+      "type": "object",
+      "properties": {
+        "Data": {
+          "$ref": "#/definitions/LnItemDetails"
+        }
+      }
+    },
+    "LnItemDetails": {
+      "type": "object",
+      "properties": {
+        "ItemCode": {
+          "type": "string"
+        },
+        "ItemDescription": {
+          "type": "string"
+        },
+        "ProductVariant": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ConfigurationFeatures": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LnFeatureModel"
+          }
+        },
+        "Bom": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LnBomModel"
+          }
+        }
+      }
+    },
+    "LnFeatureModel": {
+      "type": "object",
+      "properties": {
+        "FeatureCode": {
+          "type": "string"
+        },
+        "FeatureDetail": {
+          "type": "string"
+        },
+        "DetailDescription": {
+          "type": "string"
+        }
+      }
+    },
+    "LnBomModel": {
+      "type": "object",
+      "properties": {
+        "ItemNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ItemCode": {
+          "type": "string"
+        },
+        "ItemDescription": {
+          "type": "string"
+        },
+        "ProductVariant": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Quantity": {
+          "format": "double",
+          "type": "number"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "Apis Manager": {
+      "type": "oauth2",
+      "flow": "password",
+      "tokenUrl": "/token",
+      "scopes": {}
+    }
+  }
+}

@@ -1,0 +1,467 @@
+openapi: 3.2.0
+info:
+  title: Xylem Doc View API
+  version: v3.5
+  description: 'Operations tagged DocView across 2 of this provider''s published API definitions: xylem-apis-dev-swagger.json, xylem-apis-manager-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://apis-dev.xylem.com
+tags:
+- name: DocView
+paths:
+  /api/DocView/Get/DocTypes:
+    get:
+      tags:
+      - DocView
+      summary: Returns document types
+      operationId: DocView_GetDocTypes
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DocType'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DocType'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DocType'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DocType'
+      security:
+      - Apis Manager: []
+        Bearer: []
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/DocView/Get/DocFields:
+    get:
+      tags:
+      - DocView
+      summary: Returns document fileds
+      operationId: DocView_GetDocFields
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DocField'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DocField'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DocField'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DocField'
+      security:
+      - Apis Manager: []
+        Bearer: []
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/DocView/Get/DocFields/DocTypeId:
+    get:
+      tags:
+      - DocView
+      summary: Returns document fileds
+      operationId: DocView_GetDocFieldsByDocTypeId
+      parameters:
+      - name: docTypeId
+        in: query
+        description: The document type id parameter.
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DocField'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DocField'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DocField'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DocField'
+      security:
+      - Apis Manager: []
+        Bearer: []
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/DocView/Get/Docs:
+    post:
+      tags:
+      - DocView
+      summary: Returns documents
+      operationId: DocView_GetDocs
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/DataTablesResponse_IDictionary_String_Object'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/DataTablesResponse_IDictionary_String_Object'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataTablesResponse_IDictionary_String_Object'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DataTablesResponse_IDictionary_String_Object'
+      security:
+      - Apis Manager: []
+        Bearer: []
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/DocRequest'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/DocRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DocRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/DocRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DocRequest'
+        description: The paging, sorting and search parameter.
+        required: true
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/DocView/Get/Docs/OrderNumber:
+    post:
+      tags:
+      - DocView
+      summary: Returns documents by sales order number
+      operationId: DocView_GetDocsByOrderNumber
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/DataResponse_Object'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/DataResponse_Object'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponse_Object'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DataResponse_Object'
+      security:
+      - Apis Manager: []
+        Bearer: []
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/DocRequestOrder'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/DocRequestOrder'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DocRequestOrder'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/DocRequestOrder'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DocRequestOrder'
+        description: The document type id and order number parameter.
+        required: true
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/DocView/Get/Docs/Range:
+    post:
+      tags:
+      - DocView
+      summary: Returns documents by sales order number
+      operationId: DocView_GetDocsByRange
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/DataResponse_Object'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/DataResponse_Object'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponse_Object'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DataResponse_Object'
+      security:
+      - Apis Manager: []
+        Bearer: []
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/DocRequestRange'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/DocRequestRange'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DocRequestRange'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/DocRequestRange'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DocRequestRange'
+        description: The document type id and order number parameter.
+        required: true
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/DocView/Get/Rep/UserName:
+    get:
+      tags:
+      - DocView
+      summary: Returns Rep
+      operationId: DocView_GetRepByUserName
+      parameters:
+      - name: userName
+        in: query
+        description: The username parameter.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/RepInfo'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/RepInfo'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RepInfo'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RepInfo'
+      security:
+      - Apis Manager: []
+        Bearer: []
+    servers:
+    - url: https://apis-dev.xylem.com
+components:
+  schemas:
+    DocField:
+      type: object
+      properties:
+        Id:
+          format: int32
+          type: integer
+        TypeId:
+          format: int32
+          type: integer
+        ERPField:
+          type: string
+        DisplayName:
+          type: string
+        Displayed:
+          type: boolean
+        DisplayOrder:
+          format: int32
+          type: integer
+        Filtered:
+          type: boolean
+        Sorted:
+          type: boolean
+        Linked:
+          type: boolean
+    DataTablesColumn:
+      type: object
+      properties:
+        Data:
+          type: string
+        Name:
+          type: string
+        Searchable:
+          type: string
+        Orderable:
+          type: string
+        Search:
+          $ref: '#/components/schemas/DataTablesSearch'
+    DataTablesOrder:
+      type: object
+      properties:
+        Column:
+          format: int32
+          type: integer
+        Dir:
+          type: string
+    DocType:
+      type: object
+      properties:
+        Id:
+          format: int32
+          type: integer
+        ERPType:
+          type: string
+        DisplayName:
+          type: string
+        DisplayOrder:
+          format: int32
+          type: integer
+        Displayed:
+          type: boolean
+    DataResponse_Object:
+      type: object
+      properties:
+        Data:
+          type: object
+    DocRequestOrder:
+      type: object
+      properties:
+        DocTypeId:
+          format: int32
+          type: integer
+        OrderNumber:
+          type: string
+    DataTablesRequest:
+      type: object
+      properties:
+        Start:
+          format: int32
+          type: integer
+        Length:
+          format: int32
+          type: integer
+        Draw:
+          format: int32
+          type: integer
+        Columns:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataTablesColumn'
+        Order:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataTablesOrder'
+        Search:
+          $ref: '#/components/schemas/DataTablesSearch'
+    DocRequestRange:
+      type: object
+      properties:
+        DocTypeId:
+          format: int32
+          type: integer
+        BusinessPartners:
+          type: array
+          items:
+            type: string
+        UseDateModified:
+          type: boolean
+        DateFrom:
+          format: date-time
+          type: string
+        DateTo:
+          format: date-time
+          type: string
+        Limit:
+          format: int32
+          type: integer
+        Offset:
+          format: int32
+          type: integer
+    DataTablesResponse_IDictionary_String_Object:
+      type: object
+      properties:
+        Draw:
+          format: int32
+          type: integer
+        RecordsTotal:
+          format: int32
+          type: integer
+        RecordsFiltered:
+          format: int32
+          type: integer
+        Data:
+          type: array
+          items:
+            type: object
+            additionalProperties:
+              type: object
+    DocRequest:
+      type: object
+      properties:
+        DocUser:
+          type: string
+        DocType:
+          type: string
+        DocData:
+          $ref: '#/components/schemas/DataTablesRequest'
+    RepInfo:
+      type: object
+      properties:
+        RepType:
+          type: string
+        RepCode:
+          type: string
+    DataTablesSearch:
+      type: object
+      properties:
+        Value:
+          type: string
+        Regex:
+          type: string
+  securitySchemes:
+    Apis_Manager:
+      type: oauth2
+      flows:
+        password:
+          scopes: {}
+          tokenUrl: /token
+x-refined-from:
+- xylem-apis-dev-swagger.json
+- xylem-apis-manager-openapi.yml

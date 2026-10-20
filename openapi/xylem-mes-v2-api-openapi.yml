@@ -1,0 +1,1644 @@
+openapi: 3.2.0
+info:
+  title: Xylem MES V2 API
+  version: v3.5
+  description: 'Operations tagged MES_v2 across 2 of this provider''s published API definitions: xylem-apis-dev-swagger.json, xylem-apis-manager-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://apis-dev.xylem.com
+tags:
+- name: MES_v2
+paths:
+  /api/MES_v2/Get/Orders:
+    get:
+      tags:
+      - MES_v2
+      summary: Returns orders
+      operationId: MES_v2_GetOrders
+      parameters:
+      - name: page
+        in: query
+        description: The page number parameter.
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: size
+        in: query
+        description: The size parameter indicates the number of records to be returend.
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ResultSet_v2_IList_OrderDetail_v2'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ResultSet_v2_IList_OrderDetail_v2'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultSet_v2_IList_OrderDetail_v2'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResultSet_v2_IList_OrderDetail_v2'
+      security:
+      - Apis Manager: []
+        Bearer: []
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/MES_v2/Get/Order:
+    get:
+      tags:
+      - MES_v2
+      summary: Returns order by order number
+      operationId: MES_v2_GetOrderByOrderNumber
+      parameters:
+      - name: orderNumber
+        in: query
+        description: The order number parameter.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrderDetail_v2'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrderDetail_v2'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrderDetail_v2'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrderDetail_v2'
+      security:
+      - Apis Manager: []
+        Bearer: []
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/MES_v2/Get/OrdersWithBOM:
+    get:
+      tags:
+      - MES_v2
+      summary: Returns orders with Non-Stock BOM items (optimized single-query version)
+      operationId: MES_v2_GetOrdersWithBOM
+      parameters:
+      - name: page
+        in: query
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: size
+        in: query
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ResultSet_v2_IList_OrderDetail_v2'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ResultSet_v2_IList_OrderDetail_v2'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultSet_v2_IList_OrderDetail_v2'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResultSet_v2_IList_OrderDetail_v2'
+      security:
+      - Apis Manager: []
+        Bearer: []
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/MES_v2/Get/ShopOrders:
+    get:
+      tags:
+      - MES_v2
+      summary: Returns shop orders
+      operationId: MES_v2_GetShopOrders
+      parameters:
+      - name: page
+        in: query
+        description: The page number parameter.
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: size
+        in: query
+        description: The size parameter indicates the number of records to be returend.
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ResultSet_v2_IList_ShopOrder_v2'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ResultSet_v2_IList_ShopOrder_v2'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultSet_v2_IList_ShopOrder_v2'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResultSet_v2_IList_ShopOrder_v2'
+      security:
+      - Apis Manager: []
+        Bearer: []
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/MES_v2/Get/ShopOrdersPart:
+    get:
+      tags:
+      - MES_v2
+      summary: Returns shop order by part number
+      operationId: MES_v2_GetShopOrdersByPart
+      parameters:
+      - name: partNumber
+        in: query
+        description: The part number parameter.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ShopOrder_v2'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ShopOrder_v2'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ShopOrder_v2'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ShopOrder_v2'
+      security:
+      - Apis Manager: []
+        Bearer: []
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/MES_v2/Get/ShopOrder:
+    get:
+      tags:
+      - MES_v2
+      summary: Returns shop order by order number
+      operationId: MES_v2_GetShopOrderByOrderNumber
+      parameters:
+      - name: orderNumber
+        in: query
+        description: The order number parameter.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ShopOrder_v2'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ShopOrder_v2'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShopOrder_v2'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ShopOrder_v2'
+      security:
+      - Apis Manager: []
+        Bearer: []
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/MES_v2/Get/PurchaseOrders:
+    get:
+      tags:
+      - MES_v2
+      summary: Returns purchase orders
+      operationId: MES_v2_GetPurchaseOrders
+      parameters:
+      - name: page
+        in: query
+        description: The page number parameter.
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: size
+        in: query
+        description: The size parameter indicates the number of records to be returend.
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ResultSet_v2_IList_PurchaseOrder_v2'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ResultSet_v2_IList_PurchaseOrder_v2'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultSet_v2_IList_PurchaseOrder_v2'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResultSet_v2_IList_PurchaseOrder_v2'
+      security:
+      - Apis Manager: []
+        Bearer: []
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/MES_v2/Get/PurchaseOrdersPart:
+    get:
+      tags:
+      - MES_v2
+      summary: Returns purchase order by part number
+      operationId: MES_v2_GetPurchaseOrdersByPart
+      parameters:
+      - name: partNumber
+        in: query
+        description: The part number parameter.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PurchaseOrder_v2'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PurchaseOrder_v2'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PurchaseOrder_v2'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PurchaseOrder_v2'
+      security:
+      - Apis Manager: []
+        Bearer: []
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/MES_v2/Get/PurchaseOrder:
+    get:
+      tags:
+      - MES_v2
+      summary: Returns purchase order by order number
+      operationId: MES_v2_GetPurchaseOrderByOrderNumber
+      parameters:
+      - name: orderNumber
+        in: query
+        description: The order number parameter.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PurchaseOrder_v2'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PurchaseOrder_v2'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PurchaseOrder_v2'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PurchaseOrder_v2'
+      security:
+      - Apis Manager: []
+        Bearer: []
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/MES_v2/Get/StockParts:
+    get:
+      tags:
+      - MES_v2
+      summary: Returns stock parts
+      operationId: MES_v2_GetStockParts
+      parameters:
+      - name: page
+        in: query
+        description: The page number parameter.
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: size
+        in: query
+        description: The size parameter indicates the number of records to be returend.
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ResultSet_v2_IList_StockPart_v2'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ResultSet_v2_IList_StockPart_v2'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultSet_v2_IList_StockPart_v2'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResultSet_v2_IList_StockPart_v2'
+      security:
+      - Apis Manager: []
+        Bearer: []
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/MES_v2/Get/StockPart:
+    get:
+      tags:
+      - MES_v2
+      summary: Returns stock part
+      operationId: MES_v2_GetStockPartByPartNumber
+      parameters:
+      - name: partNumber
+        in: query
+        description: The part number parameter.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/StockPart_v2'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/StockPart_v2'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StockPart_v2'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/StockPart_v2'
+      security:
+      - Apis Manager: []
+        Bearer: []
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/MES_v2/Get/PurchasedStockParts:
+    get:
+      tags:
+      - MES_v2
+      summary: Returns purchased stock parts
+      operationId: MES_v2_GetPurchasedStockParts
+      parameters:
+      - name: page
+        in: query
+        description: The page number parameter.
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: size
+        in: query
+        description: The size parameter indicates the number of records to be returend.
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ResultSet_v2_IList_PurchasedStockPart_v2'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ResultSet_v2_IList_PurchasedStockPart_v2'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultSet_v2_IList_PurchasedStockPart_v2'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResultSet_v2_IList_PurchasedStockPart_v2'
+      security:
+      - Apis Manager: []
+        Bearer: []
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/MES_v2/Get/PurchasedStockPart:
+    get:
+      tags:
+      - MES_v2
+      summary: Returns purchased stock part by part number
+      operationId: MES_v2_GetPurchasedStockPartByPartNumber
+      parameters:
+      - name: partNumber
+        in: query
+        description: The part number parameter.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PurchasedStockPart_v2'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/PurchasedStockPart_v2'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PurchasedStockPart_v2'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/PurchasedStockPart_v2'
+      security:
+      - Apis Manager: []
+        Bearer: []
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/MES_v2/Get/Routing:
+    get:
+      tags:
+      - MES_v2
+      summary: Returns routing by part number
+      operationId: MES_v2_GetRoutingByPartNumber
+      parameters:
+      - name: partNumber
+        in: query
+        description: The part number parameter.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Routing_v2'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Routing_v2'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Routing_v2'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Routing_v2'
+      security:
+      - Apis Manager: []
+        Bearer: []
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/MES_v2/Get/BOM:
+    get:
+      tags:
+      - MES_v2
+      summary: Returns BOM by part number
+      operationId: MES_v2_GetBOMByPartNumber
+      parameters:
+      - name: partNumber
+        in: query
+        description: The part number parameter.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BOM_v2'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BOM_v2'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BOM_v2'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BOM_v2'
+      security:
+      - Apis Manager: []
+        Bearer: []
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/MES_v2/Get/OrderBOM:
+    get:
+      tags:
+      - MES_v2
+      summary: Returns Order BOM by order number
+      operationId: MES_v2_GetOrderBOMByOrderNumber
+      parameters:
+      - name: orderNumber
+        in: query
+        description: The order number parameter.
+        required: true
+        schema:
+          type: string
+      - name: lineNumber
+        in: query
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrderBOM_v2'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrderBOM_v2'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrderBOM_v2'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrderBOM_v2'
+      security:
+      - Apis Manager: []
+        Bearer: []
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/MES_v2/Get/OrderRecursiveBOMOrderNumberandLine:
+    get:
+      tags:
+      - MES_v2
+      summary: 8/17/2026 Returns full recursive Order BOM by order number and line.
+      operationId: MES_v2_GetOrderRecursiveBOMByOrderNumberandLine
+      parameters:
+      - name: orderNumber
+        in: query
+        description: The order number parameter.
+        required: true
+        schema:
+          type: string
+      - name: lineNumber
+        in: query
+        description: The order number parameter.
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrderBOM_v2'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrderBOM_v2'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrderBOM_v2'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrderBOM_v2'
+      security:
+      - Apis Manager: []
+        Bearer: []
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/MES_v2/Create/ShopOrders:
+    post:
+      tags:
+      - MES_v2
+      summary: Creates and returns list of the shop orders
+      operationId: MES_v2_CreateShopOrders
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ResultStatus_v2_IList_ResultStatus_v2_NewOrder_v2'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ResultStatus_v2_IList_ResultStatus_v2_NewOrder_v2'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultStatus_v2_IList_ResultStatus_v2_NewOrder_v2'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResultStatus_v2_IList_ResultStatus_v2_NewOrder_v2'
+      security:
+      - Apis Manager: []
+        Bearer: []
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/NewOrder_v2'
+          text/xml:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/NewOrder_v2'
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/NewOrder_v2'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/NewOrder_v2'
+          application/x-www-form-urlencoded:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/NewOrder_v2'
+        description: The list of new shop orders parameter.
+        required: true
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/MES_v2/Create/PurchaseOrders:
+    post:
+      tags:
+      - MES_v2
+      summary: Creates and returns list of the purchase orders
+      operationId: MES_v2_CreatePurchaseOrders
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ResultStatus_v2_IList_ResultStatus_v2_NewOrder_v2'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ResultStatus_v2_IList_ResultStatus_v2_NewOrder_v2'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultStatus_v2_IList_ResultStatus_v2_NewOrder_v2'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResultStatus_v2_IList_ResultStatus_v2_NewOrder_v2'
+      security:
+      - Apis Manager: []
+        Bearer: []
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/NewOrder_v2'
+          text/xml:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/NewOrder_v2'
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/NewOrder_v2'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/NewOrder_v2'
+          application/x-www-form-urlencoded:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/NewOrder_v2'
+        description: The list of new purchase orders parameter.
+        required: true
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/MES_v2/Create/ShippingLabels:
+    post:
+      tags:
+      - MES_v2
+      summary: Creates and returns list of shipping labels
+      operationId: MES_v2_CreateShippingLabels
+      parameters:
+      - name: printer
+        in: query
+        description: The printer name parameter.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ResultStatus_v2_IList_ResultStatus_v2_ShippingLabel_v2'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ResultStatus_v2_IList_ResultStatus_v2_ShippingLabel_v2'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultStatus_v2_IList_ResultStatus_v2_ShippingLabel_v2'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResultStatus_v2_IList_ResultStatus_v2_ShippingLabel_v2'
+      security:
+      - Apis Manager: []
+        Bearer: []
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ShippingLabel_v2'
+          text/xml:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ShippingLabel_v2'
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ShippingLabel_v2'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ShippingLabel_v2'
+          application/x-www-form-urlencoded:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ShippingLabel_v2'
+        description: The list of shipping labels parameter.
+        required: true
+    servers:
+    - url: https://apis-dev.xylem.com
+  /api/MES_v2/Create/NamePlateLabels:
+    post:
+      tags:
+      - MES_v2
+      summary: Creates and returns list of name plate labels
+      operationId: MES_v2_CreateNamePlateLabels
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ResultStatus_v2_IList_ResultStatus_v2_NamePlateLabel_v2'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ResultStatus_v2_IList_ResultStatus_v2_NamePlateLabel_v2'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultStatus_v2_IList_ResultStatus_v2_NamePlateLabel_v2'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResultStatus_v2_IList_ResultStatus_v2_NamePlateLabel_v2'
+      security:
+      - Apis Manager: []
+        Bearer: []
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/NamePlateLabel_v2'
+          text/xml:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/NamePlateLabel_v2'
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/NamePlateLabel_v2'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/NamePlateLabel_v2'
+          application/x-www-form-urlencoded:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/NamePlateLabel_v2'
+        description: The list of name plate labels parameter.
+        required: true
+    servers:
+    - url: https://apis-dev.xylem.com
+components:
+  schemas:
+    OrderDetail_v2:
+      type: object
+      properties:
+        OrderNumber:
+          type: string
+        LineNumber:
+          format: int32
+          type: integer
+        CustomerName:
+          type: string
+        DueDate:
+          format: date-time
+          type: string
+        ScheduledDate:
+          format: date-time
+          type: string
+        EnteredDate:
+          format: date-time
+          type: string
+        PartNumber:
+          type: string
+        VendorNumber:
+          type: string
+        DrawingNumber:
+          type: string
+        RevisionLevel:
+          type: string
+        Model:
+          type: string
+        Balance:
+          format: double
+          type: number
+        Dollars:
+          format: double
+          type: number
+        Hold:
+          type: string
+        Status:
+          type: string
+        Class:
+          type: string
+        Type:
+          type: string
+        LeadTime:
+          type: string
+        WorkCenters:
+          type: string
+        NonStockBOM:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderBOM_v2'
+    ShippingLabel_v2:
+      type: object
+      properties:
+        OrderNumber:
+          type: string
+        LineNumber:
+          format: int32
+          type: integer
+        Count:
+          format: int32
+          type: integer
+        Barcode:
+          type: boolean
+    PurchasedStockPart_v2:
+      type: object
+      properties:
+        PartNumber:
+          type: string
+        Description:
+          type: string
+        VendorNumber:
+          type: string
+        DrawingNumber:
+          type: string
+        RevisionLevel:
+          type: string
+        LeadDays:
+          format: int32
+          type: integer
+        MinBalance:
+          format: double
+          type: number
+        Available:
+          format: double
+          type: number
+        OnHand:
+          format: double
+          type: number
+        CustAlloc:
+          format: double
+          type: number
+        MfgAlloc:
+          format: double
+          type: number
+        OnOrder:
+          format: double
+          type: number
+        Class:
+          type: string
+        AvgUsage:
+          format: double
+          type: number
+        UsageMonth1:
+          format: double
+          type: number
+        UsageMonth2:
+          format: double
+          type: number
+        UsageMonth3:
+          format: double
+          type: number
+        UsageMonth4:
+          format: double
+          type: number
+        UsageMonth5:
+          format: double
+          type: number
+        UsageMonth6:
+          format: double
+          type: number
+        UsageMonth7:
+          format: double
+          type: number
+        UsageMonth8:
+          format: double
+          type: number
+        UsageMonth9:
+          format: double
+          type: number
+        UsageMonth10:
+          format: double
+          type: number
+        UsageMonth11:
+          format: double
+          type: number
+        UsageMonth12:
+          format: double
+          type: number
+    Routing_v2:
+      type: object
+      properties:
+        PartNumber:
+          type: string
+        OperationNumber:
+          format: int32
+          type: integer
+        WorkCenter:
+          format: int32
+          type: integer
+        Description:
+          type: string
+        BasisCode:
+          type: string
+        RunHours:
+          format: double
+          type: number
+        SetupHours:
+          format: double
+          type: number
+        MachineHours:
+          format: double
+          type: number
+        Operators:
+          format: int32
+          type: integer
+        Tool:
+          type: string
+        MoveDays:
+          format: double
+          type: number
+        QueueDays:
+          format: double
+          type: number
+    ResultSet_v2_IList_StockPart_v2:
+      type: object
+      properties:
+        PageNumber:
+          format: int32
+          type: integer
+        PageSize:
+          format: int32
+          type: integer
+        PageCount:
+          format: int32
+          type: integer
+        DataCount:
+          format: int32
+          type: integer
+        Data:
+          type: array
+          items:
+            $ref: '#/components/schemas/StockPart_v2'
+    ShopOrder_v2:
+      type: object
+      properties:
+        OrderNumber:
+          type: string
+        PartNumber:
+          type: string
+        CustomerNumber:
+          type: string
+        CustomerOrderNumber:
+          type: string
+        CustomerOrderLine:
+          format: int32
+          type: integer
+        ReleaseDate:
+          format: date-time
+          type: string
+        DueDate:
+          format: date-time
+          type: string
+        Status:
+          type: string
+        QuantityRequired:
+          format: double
+          type: number
+        QuantityFinished:
+          format: double
+          type: number
+        Comment:
+          type: string
+        RunHours:
+          format: double
+          type: number
+        SetupHours:
+          format: double
+          type: number
+        MachineHours:
+          format: double
+          type: number
+        Class:
+          type: string
+        RevisionLevel:
+          type: string
+    NewOrder_v2:
+      type: object
+      properties:
+        PartNumber:
+          type: string
+        Quantity:
+          format: double
+          type: number
+        CustomerOrderNumber:
+          type: string
+        CustomerOrderLine:
+          format: int32
+          type: integer
+        ReleaseDate:
+          format: date-time
+          type: string
+        NCRComments:
+          type: string
+    ResultStatus_v2_NamePlateLabel_v2:
+      type: object
+      properties:
+        StatusCode:
+          enum:
+          - Success
+          - Warning
+          - Queued
+          - Error
+          - Failed
+          type: string
+        StatusText:
+          type: string
+        Data:
+          $ref: '#/components/schemas/NamePlateLabel_v2'
+    ResultStatus_v2_IList_ResultStatus_v2_NewOrder_v2:
+      type: object
+      properties:
+        StatusCode:
+          enum:
+          - Success
+          - Warning
+          - Queued
+          - Error
+          - Failed
+          type: string
+        StatusText:
+          type: string
+        Data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResultStatus_v2_NewOrder_v2'
+    ResultStatus_v2_IList_ResultStatus_v2_ShippingLabel_v2:
+      type: object
+      properties:
+        StatusCode:
+          enum:
+          - Success
+          - Warning
+          - Queued
+          - Error
+          - Failed
+          type: string
+        StatusText:
+          type: string
+        Data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResultStatus_v2_ShippingLabel_v2'
+    ResultSet_v2_IList_PurchaseOrder_v2:
+      type: object
+      properties:
+        PageNumber:
+          format: int32
+          type: integer
+        PageSize:
+          format: int32
+          type: integer
+        PageCount:
+          format: int32
+          type: integer
+        DataCount:
+          format: int32
+          type: integer
+        Data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PurchaseOrder_v2'
+    PlateLayout_v2:
+      type: object
+      properties:
+        PlateMounting:
+          enum:
+          - NotApplicable
+          - Top
+          - Bottom
+          type: string
+        Reversed:
+          type: boolean
+        TopLeft:
+          $ref: '#/components/schemas/Box_v2'
+        TopRight:
+          $ref: '#/components/schemas/Box_v2'
+        BottomLeft:
+          $ref: '#/components/schemas/Box_v2'
+        BottomRight:
+          $ref: '#/components/schemas/Box_v2'
+    ResultSet_v2_IList_PurchasedStockPart_v2:
+      type: object
+      properties:
+        PageNumber:
+          format: int32
+          type: integer
+        PageSize:
+          format: int32
+          type: integer
+        PageCount:
+          format: int32
+          type: integer
+        DataCount:
+          format: int32
+          type: integer
+        Data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PurchasedStockPart_v2'
+    ResultStatus_v2_ShippingLabel_v2:
+      type: object
+      properties:
+        StatusCode:
+          enum:
+          - Success
+          - Warning
+          - Queued
+          - Error
+          - Failed
+          type: string
+        StatusText:
+          type: string
+        Data:
+          $ref: '#/components/schemas/ShippingLabel_v2'
+    OrderBOM_v2:
+      type: object
+      properties:
+        OrderNumber:
+          type: string
+        LineNumber:
+          format: int32
+          type: integer
+        CustomerName:
+          type: string
+        DueDate:
+          format: date-time
+          type: string
+        ScheduledDate:
+          format: date-time
+          type: string
+        EnteredDate:
+          format: date-time
+          type: string
+        ParentPartNumber:
+          type: string
+        PartNumber:
+          type: string
+        VendorNumber:
+          type: string
+        DrawingNumber:
+          type: string
+        RevisionLevel:
+          type: string
+        Model:
+          type: string
+        Balance:
+          format: double
+          type: number
+        Status:
+          type: string
+        Class:
+          type: string
+        Type:
+          type: string
+        Level:
+          format: int32
+          type: integer
+        LeadTime:
+          type: string
+        WorkCenters:
+          type: string
+    NamePlateLabel_v2:
+      type: object
+      properties:
+        PlateTitle:
+          type: string
+        PlateType:
+          type: string
+        CompanyName:
+          type: string
+        CompanyType:
+          type: string
+        LabelType:
+          type: string
+        Nikel:
+          type: boolean
+        Serial:
+          type: boolean
+        OrderNumber:
+          type: string
+        LineNumber:
+          format: int32
+          type: integer
+        PartNumber:
+          type: string
+        CustomerPartNumber:
+          type: string
+        DrawingNumber:
+          type: string
+        PurchaseOrder:
+          type: string
+        Model:
+          type: string
+        MaxWorkPressure:
+          type: string
+        MaxTemperature:
+          type: string
+        ExtraInfo:
+          type: string
+        CrnNumber:
+          type: string
+        RecordId:
+          type: string
+        PlateFormat:
+          type: string
+        PlateCount:
+          format: int32
+          type: integer
+        Count:
+          format: int32
+          type: integer
+        PlateLayout:
+          $ref: '#/components/schemas/PlateLayout_v2'
+    ResultSet_v2_IList_OrderDetail_v2:
+      type: object
+      properties:
+        PageNumber:
+          format: int32
+          type: integer
+        PageSize:
+          format: int32
+          type: integer
+        PageCount:
+          format: int32
+          type: integer
+        DataCount:
+          format: int32
+          type: integer
+        Data:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderDetail_v2'
+    StockPart_v2:
+      type: object
+      properties:
+        PartNumber:
+          type: string
+        Description:
+          type: string
+        VendorNumber:
+          type: string
+        DrawingNumber:
+          type: string
+        RevisionLevel:
+          type: string
+        LeadDays:
+          format: int32
+          type: integer
+        MinBalance:
+          format: double
+          type: number
+        Available:
+          format: double
+          type: number
+        OnHand:
+          format: double
+          type: number
+        CustAlloc:
+          format: double
+          type: number
+        MfgAlloc:
+          format: double
+          type: number
+        OnOrder:
+          format: double
+          type: number
+        Class:
+          type: string
+        AvgUsage:
+          format: double
+          type: number
+        UsageMonth1:
+          format: double
+          type: number
+        UsageMonth2:
+          format: double
+          type: number
+        UsageMonth3:
+          format: double
+          type: number
+        UsageMonth4:
+          format: double
+          type: number
+        UsageMonth5:
+          format: double
+          type: number
+        UsageMonth6:
+          format: double
+          type: number
+        UsageMonth7:
+          format: double
+          type: number
+        UsageMonth8:
+          format: double
+          type: number
+        UsageMonth9:
+          format: double
+          type: number
+        UsageMonth10:
+          format: double
+          type: number
+        UsageMonth11:
+          format: double
+          type: number
+        UsageMonth12:
+          format: double
+          type: number
+    ResultStatus_v2_NewOrder_v2:
+      type: object
+      properties:
+        StatusCode:
+          enum:
+          - Success
+          - Warning
+          - Queued
+          - Error
+          - Failed
+          type: string
+        StatusText:
+          type: string
+        Data:
+          $ref: '#/components/schemas/NewOrder_v2'
+    PurchaseOrder_v2:
+      type: object
+      properties:
+        OrderNumber:
+          type: string
+        PartNumber:
+          type: string
+        VendorNumber:
+          type: string
+        OperationNumber:
+          type: string
+        CustomerNumber:
+          type: string
+        CustomerOrderNumber:
+          type: string
+        CustomerOrderLine:
+          format: int32
+          type: integer
+        EnteredDate:
+          format: date-time
+          type: string
+        DueDate:
+          format: date-time
+          type: string
+        QuantityOrdered:
+          format: double
+          type: number
+        QuantityReceived:
+          format: double
+          type: number
+        Comment:
+          type: string
+        Class:
+          type: string
+        LeadTime:
+          type: string
+    ResultStatus_v2_IList_ResultStatus_v2_NamePlateLabel_v2:
+      type: object
+      properties:
+        StatusCode:
+          enum:
+          - Success
+          - Warning
+          - Queued
+          - Error
+          - Failed
+          type: string
+        StatusText:
+          type: string
+        Data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResultStatus_v2_NamePlateLabel_v2'
+    Box_v2:
+      type: object
+      properties:
+        BoxA:
+          type: string
+        BoxB:
+          type: string
+    BOM_v2:
+      type: object
+      properties:
+        ParentPartNumber:
+          type: string
+        PartNumber:
+          type: string
+        VendorNumber:
+          type: string
+        DrawingNumber:
+          type: string
+        RevisionLevel:
+          type: string
+        Sequence:
+          format: int32
+          type: integer
+        Model:
+          type: string
+        QuantityRequired:
+          format: double
+          type: number
+        Class:
+          type: string
+        Type:
+          type: string
+        Level:
+          format: int32
+          type: integer
+    ResultSet_v2_IList_ShopOrder_v2:
+      type: object
+      properties:
+        PageNumber:
+          format: int32
+          type: integer
+        PageSize:
+          format: int32
+          type: integer
+        PageCount:
+          format: int32
+          type: integer
+        DataCount:
+          format: int32
+          type: integer
+        Data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ShopOrder_v2'
+  securitySchemes:
+    Apis_Manager:
+      type: oauth2
+      flows:
+        password:
+          scopes: {}
+          tokenUrl: /token
+x-refined-from:
+- xylem-apis-dev-swagger.json
+- xylem-apis-manager-openapi.yml

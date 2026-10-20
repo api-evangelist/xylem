@@ -1,0 +1,40 @@
+generated: '2026-10-19'
+method: derived
+generator: derive-vocabulary.py
+source: openapi/xylem-apis-manager-openapi.yml
+vocabulary:
+  name: Xylem Domain Vocabulary
+  description: 'Terms declared by Xylem''s own API contract: its resource groups, objects and enumerations, with the contract''s definitions.
+    Derived, not authored.'
+  version: '2026-10-19'
+  terms:
+  - term: DocView
+    definition: 'Resource group in the contract; its operation GET /api/DocView/Get/DocTypes: Returns document types.'
+    tags:
+    - Resource Group
+    source: openapi/xylem-apis-manager-openapi.yml
+  - term: Infor
+    definition: 'Resource group in the contract; its operation POST /api/Infor/Get: Returns xml or json response.'
+    tags:
+    - Resource Group
+    source: openapi/xylem-apis-manager-openapi.yml
+  - term: MES
+    definition: 'Resource group in the contract; its operation GET /api/MES/Get/BrazedOrders: Returns brazed orders.'
+    tags:
+    - Resource Group
+    source: openapi/xylem-apis-manager-openapi.yml
+  - term: MES_v2
+    definition: 'Resource group in the contract; its operation GET /api/MES_v2/Get/Orders: Returns orders.'
+    tags:
+    - Resource Group
+    source: openapi/xylem-apis-manager-openapi.yml
+  - term: NamePlate
+    definition: 'Resource group in the contract; its operation GET /api/NamePlate/Run/Task: Runs scheduled task.'
+    tags:
+    - Resource Group
+    source: openapi/xylem-apis-manager-openapi.yml
+  - term: SerialCard
+    definition: 'Resource group in the contract; its operation GET /api/SerialCard/Get/Details: Returns matched part details.'
+    tags:
+    - Resource Group
+    source: openapi/xylem-apis-manager-openapi.yml

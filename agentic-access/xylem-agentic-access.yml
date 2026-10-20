@@ -1,0 +1,725 @@
+generated: '2026-10-19'
+method: generated
+source: openapi/xylem-apis-manager-openapi.yml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 57
+  by_action_class:
+    connected: 37
+    acting: 20
+  by_consequence:
+    read: 37
+    write: 11
+    physical: 9
+  human_in_the_loop_required: 0
+operations:
+- path: /api/DocView/Get/DocTypes
+  method: get
+  operationId: DocView_GetDocTypes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/DocView/Get/DocFields
+  method: get
+  operationId: DocView_GetDocFields
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/DocView/Get/DocFields/DocTypeId
+  method: get
+  operationId: DocView_GetDocFieldsByDocTypeId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/DocView/Get/Docs
+  method: post
+  operationId: DocView_GetDocs
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/DocView/Get/Docs/OrderNumber
+  method: post
+  operationId: DocView_GetDocsByOrderNumber
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/DocView/Get/Docs/Range
+  method: post
+  operationId: DocView_GetDocsByRange
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/DocView/Get/Rep/UserName
+  method: get
+  operationId: DocView_GetRepByUserName
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/Infor/Get
+  method: post
+  operationId: Infor_Get
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/MES/Get/BrazedOrders
+  method: get
+  operationId: MES_GetBrazedOrders
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/MES/Get/BrazedOrder
+  method: get
+  operationId: MES_GetBrazedOrderByOrderNumber
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/MES/Get/BrazedStockParts
+  method: get
+  operationId: MES_GetBrazedStockParts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/MES/Get/BrazedStockPart
+  method: get
+  operationId: MES_GetBrazedStockPartByPartNumber
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/MES/Get/BrazedRouting
+  method: get
+  operationId: MES_GetBrazedRoutingByPartNumber
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/MES/Get/BrazedBOM
+  method: get
+  operationId: MES_GetBrazedBOMByPartNumber
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/MES/Get/BrazedShopOrders
+  method: get
+  operationId: MES_GetBrazedShopOrders
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/MES/Get/BrazedShopOrdersPart
+  method: get
+  operationId: MES_GetBrazedShopOrdersByPart
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/MES/Get/BrazedShopOrder
+  method: get
+  operationId: MES_GetBrazedShopOrderByOrderNumber
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/MES/Get/BrazedOrderNotes
+  method: get
+  operationId: MES_GetBrazedOrderNotesByOrderNumber
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/MES/Get/BrazedNamePlate
+  method: post
+  operationId: MES_GetBrazedNamePlateByOrderNumberLineNumber
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/MES/Get/BrazedShippingOrders
+  method: get
+  operationId: MES_GetBrazedShippingOrders
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/MES/Create/BrazedShippingOrders
+  method: post
+  operationId: MES_CreateBrazedShippingOrders
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/MES/Create/BrazedShopOrders
+  method: post
+  operationId: MES_CreateBrazedShopOrders
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/MES/Create/BrazedShippingLabels
+  method: post
+  operationId: MES_CreateBrazedShippingLabels
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/MES/Create/BrazedNamePlateLabels
+  method: post
+  operationId: MES_CreateBrazedNamePlateLabels
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/MES_v2/Get/Orders
+  method: get
+  operationId: MES_v2_GetOrders
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/MES_v2/Get/Order
+  method: get
+  operationId: MES_v2_GetOrderByOrderNumber
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/MES_v2/Get/OrdersWithBOM
+  method: get
+  operationId: MES_v2_GetOrdersWithBOM
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/MES_v2/Get/ShopOrders
+  method: get
+  operationId: MES_v2_GetShopOrders
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/MES_v2/Get/ShopOrdersPart
+  method: get
+  operationId: MES_v2_GetShopOrdersByPart
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/MES_v2/Get/ShopOrder
+  method: get
+  operationId: MES_v2_GetShopOrderByOrderNumber
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/MES_v2/Get/PurchaseOrders
+  method: get
+  operationId: MES_v2_GetPurchaseOrders
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/MES_v2/Get/PurchaseOrdersPart
+  method: get
+  operationId: MES_v2_GetPurchaseOrdersByPart
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/MES_v2/Get/PurchaseOrder
+  method: get
+  operationId: MES_v2_GetPurchaseOrderByOrderNumber
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/MES_v2/Get/StockParts
+  method: get
+  operationId: MES_v2_GetStockParts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/MES_v2/Get/StockPart
+  method: get
+  operationId: MES_v2_GetStockPartByPartNumber
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/MES_v2/Get/PurchasedStockParts
+  method: get
+  operationId: MES_v2_GetPurchasedStockParts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/MES_v2/Get/PurchasedStockPart
+  method: get
+  operationId: MES_v2_GetPurchasedStockPartByPartNumber
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/MES_v2/Get/Routing
+  method: get
+  operationId: MES_v2_GetRoutingByPartNumber
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/MES_v2/Get/BOM
+  method: get
+  operationId: MES_v2_GetBOMByPartNumber
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/MES_v2/Get/OrderBOM
+  method: get
+  operationId: MES_v2_GetOrderBOMByOrderNumber
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/MES_v2/Get/OrderRecursiveBOMOrderNumberandLine
+  method: get
+  operationId: MES_v2_GetOrderRecursiveBOMByOrderNumberandLine
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/MES_v2/Create/ShopOrders
+  method: post
+  operationId: MES_v2_CreateShopOrders
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/MES_v2/Create/PurchaseOrders
+  method: post
+  operationId: MES_v2_CreatePurchaseOrders
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/MES_v2/Create/ShippingLabels
+  method: post
+  operationId: MES_v2_CreateShippingLabels
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/MES_v2/Create/NamePlateLabels
+  method: post
+  operationId: MES_v2_CreateNamePlateLabels
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/NamePlate/Run/Task
+  method: get
+  operationId: NamePlate_RunTask
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/NamePlate/Engrave/Queue
+  method: post
+  operationId: NamePlate_EngraveQueue
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/NamePlate/Engrave/Layout
+  method: post
+  operationId: NamePlate_EngraveLayout
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/NamePlate/Get/Engraved
+  method: post
+  operationId: NamePlate_GetEngraved
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/NamePlate/Get/Queue
+  method: post
+  operationId: NamePlate_GetQueue
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/NamePlate/Create/Queue
+  method: post
+  operationId: NamePlate_CreateQueue
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/NamePlate/Delete/Queue
+  method: post
+  operationId: NamePlate_DeleteQueue
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/NamePlate/ReEngrave/Queue
+  method: post
+  operationId: NamePlate_ReEngraveQueue
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/NamePlate/Get/Authorized/SecurityContent
+  method: get
+  operationId: NamePlate_GetAuthorizedBySecurityContent
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/SerialCard/Get/Details
+  method: get
+  operationId: SerialCard_GetDetails
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/SerialCard/Get/LnOrderInfo
+  method: get
+  operationId: SerialCard_GetLnOrderInfo
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/SerialCard/Get/LnItemInfo
+  method: get
+  operationId: SerialCard_GetLnItemInfo
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none

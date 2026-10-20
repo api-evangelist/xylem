@@ -1,0 +1,45 @@
+{
+  "provider": "xylem",
+  "sources": [
+    "_original/xylem-apis-dev-swagger.json",
+    "xylem-apis-manager-openapi.yml"
+  ],
+  "outputs": [
+    "xylem-docview-api-openapi.yml",
+    "xylem-infor-api-openapi.yml",
+    "xylem-mes-api-openapi.yml",
+    "xylem-mes-v2-api-openapi.yml",
+    "xylem-nameplate-api-openapi.yml",
+    "xylem-serialcard-api-openapi.yml"
+  ],
+  "archived": [
+    "archived openapi/xylem-apis-manager-openapi.yml"
+  ],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "xylem-apis-dev-swagger.json: upgraded swagger 2.0 -> OpenAPI 3.2.0; renamed 36 component key(s) illegal in 3.x (e.g. DataResponse[LnItemDetails])",
+    "xylem-apis-dev-swagger.json: declared missing tag: DocView",
+    "xylem-apis-dev-swagger.json: declared missing tag: Infor",
+    "xylem-apis-dev-swagger.json: declared missing tag: MES",
+    "xylem-apis-dev-swagger.json: declared missing tag: MES_v2",
+    "xylem-apis-dev-swagger.json: declared missing tag: NamePlate",
+    "xylem-apis-dev-swagger.json: declared missing tag: SerialCard",
+    "xylem-apis-manager-openapi.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0; renamed 36 component key(s) illegal in 3.x (e.g. DataResponse[LnItemDetails])",
+    "xylem-apis-manager-openapi.yml: declared missing tag: DocView",
+    "xylem-apis-manager-openapi.yml: declared missing tag: Infor",
+    "xylem-apis-manager-openapi.yml: declared missing tag: MES",
+    "xylem-apis-manager-openapi.yml: declared missing tag: MES_v2",
+    "xylem-apis-manager-openapi.yml: declared missing tag: NamePlate",
+    "xylem-apis-manager-openapi.yml: declared missing tag: SerialCard",
+    "tag 'DocView' spans 2 source specs (xylem-apis-dev-swagger.json, xylem-apis-manager-openapi.yml): per-path servers applied",
+    "tag 'Infor' spans 2 source specs (xylem-apis-dev-swagger.json, xylem-apis-manager-openapi.yml): per-path servers applied",
+    "tag 'MES' spans 2 source specs (xylem-apis-dev-swagger.json, xylem-apis-manager-openapi.yml): per-path servers applied",
+    "tag 'MES_v2' spans 2 source specs (xylem-apis-dev-swagger.json, xylem-apis-manager-openapi.yml): per-path servers applied",
+    "tag 'NamePlate' spans 2 source specs (xylem-apis-dev-swagger.json, xylem-apis-manager-openapi.yml): per-path servers applied",
+    "tag 'SerialCard' spans 2 source specs (xylem-apis-dev-swagger.json, xylem-apis-manager-openapi.yml): per-path servers applied",
+    "apis.yml register: written (+6 apis, 6 total)"
+  ],
+  "skipped": []
+}

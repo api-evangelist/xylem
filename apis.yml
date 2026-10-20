@@ -1,5 +1,7 @@
 name: Xylem
+
 aid: xylem
+
 deliveryModel:
   model: unknown
   open_source: false
@@ -11,7 +13,9 @@ deliveryModel:
   - none
   generated: '2026-08-28'
   method: derived
+
 specificationVersion: '0.23'
+
 accessModel:
   pricing: quote-only
   onboarding: sales
@@ -25,89 +29,178 @@ accessModel:
   - plans/xylem-plans-pricing.yml
   generated: '2026-09-04'
   method: searched
+
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/xylem.png
+
 tags:
-  - Fortune 1000
-  - Water
-  - Water Technology
-  - Utilities
-  - Smart Metering
-  - Industrial IoT
-  - Water Quality
-  - Wastewater
-  - Manufacturing
-url: 
-  https://raw.githubusercontent.com/api-evangelist/xylem/refs/heads/main/apis.yml
+- Fortune 1000
+- Water
+- Water Technology
+- Utilities
+- Smart Metering
+- Industrial IoT
+- Water Quality
+- Wastewater
+- Manufacturing
+
+url: https://raw.githubusercontent.com/api-evangelist/xylem/refs/heads/main/apis.yml
+
 created: '2026-03-21'
+
 modified: '2026-09-04'
+
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
-  - FN: APIs.json
-    email: info@apis.io
-apis: []
+- FN: Kin Lane
+  email: kin@apievangelist.com
+- FN: APIs.json
+  email: info@apis.io
+
+description: 'Xylem Inc. (NYSE: XYL) is a global water technology company that moves, treats, analyzes, monitors and returns water to the environment
+  across the full water cycle. Its brands include Sensus smart metering and AMI networks, Xylem Vue utility operations software built with Idrica''s
+  GoAigua platform, YSI water quality instrumentation, HYPACK hydrographic survey software, and the Flygt, Godwin, WEDECO and Aanderaa product
+  lines. Xylem operates live, first-party API hosts for Xylem Cloud, the Xylem Vue services and its product selector, but publishes no API contract,
+  developer portal or reference for any of them; the one machine-readable document it serves anonymously is the OpenID Connect discovery metadata
+  for the Xylem Cloud identity realm.'
+
 common:
-  - type: Website
-    url: https://www.xylem.com
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/xylem-inc
-  - type: Blog
-    url: https://www.xylem.com/en-us/resources/blogs/making-waves/
-  - type: Support
-    url: https://www.xylem.com/en-us/contact-us/
-  - type: TermsOfService
-    url: https://www.xylem.com/en-us/support/terms-and-conditions/
-  - type: PrivacyPolicy
-    url: https://www.xylem.com/en-us/resources/policies/privacy/
-  - type: Login
-    url: https://cloud.xylem.com/xcloud/sso/
-  - type: StatusPage
-    url: https://status.xylem.com/
-  - type: Security
-    url: security/xylem-vulnerability-disclosure.yml
-  - type: VulnerabilityDisclosure
-    url: security/xylem-vulnerability-disclosure.yml
-  - type: TrustCenter
-    url: security/xylem-trust-center.yml
-  - type: Compliance
-    url: security/xylem-trust-center.yml
-  - type: DomainSecurity
-    url: security/xylem-domain-security.yml
-  - type: WellKnown
-    url: well-known/xylem-well-known.yml
-  - type: Authentication
-    url: authentication/xylem-authentication.yml
-  - type: OAuthScopes
-    url: scopes/xylem-scopes.yml
-  - type: Conformance
-    url: conformance/xylem-conformance.yml
-  - type: Conventions
-    url: conventions/xylem-conventions.yml
-  - type: ErrorCatalog
-    url: errors/xylem-problem-types.yml
-  - type: Lifecycle
-    url: lifecycle/xylem-lifecycle.yml
-  - type: Packages
-    url: packages/xylem-packages.yml
-  - type: Plans
-    url: plans/xylem-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/xylem-rate-limits.yml
-  - type: LLMsTxt
-    url: llms/xylem-llms.txt
-description: >-
-  Xylem Inc. (NYSE: XYL) is a global water technology company that moves, treats,
-  analyzes, monitors and returns water to the environment across the full water cycle.
-  Its brands include Sensus smart metering and AMI networks, Xylem Vue utility
-  operations software built with Idrica's GoAigua platform, YSI water quality
-  instrumentation, HYPACK hydrographic survey software, and the Flygt, Godwin, WEDECO
-  and Aanderaa product lines. Xylem operates live, first-party API hosts for Xylem
-  Cloud, the Xylem Vue services and its product selector, but publishes no API contract,
-  developer portal or reference for any of them; the one machine-readable document it
-  serves anonymously is the OpenID Connect discovery metadata for the Xylem Cloud
-  identity realm.
+- type: AgentSkill
+  url: skills/_index.yml
+- type: AgenticAccess
+  url: agentic-access/xylem-agentic-access.yml
+- type: Spectral
+  url: rules/xylem-rules.yml
+- type: Vocabulary
+  url: vocabulary/xylem-vocabulary.yml
+- type: DataModel
+  url: data-model/xylem-data-model.yml
+- type: Deprecation
+  url: lifecycle/xylem-lifecycle.yml
+- type: Hosts
+  url: hosts/xylem-hosts.yml
+- type: Vendors
+  url: vendors/xylem-vendors.yml
+- type: Newsroom
+  url: https://www.xylem.com/en-us/about-xylem/newsroom/
+- type: Leadership
+  url: https://www.xylem.com/en-us/about-xylem/leadership/
+- type: Website
+  url: https://www.xylem.com
+- type: LinkedIn
+  url: https://www.linkedin.com/company/xylem-inc
+- type: Blog
+  url: https://www.xylem.com/en-us/resources/blogs/making-waves/
+- type: Support
+  url: https://www.xylem.com/en-us/contact-us/
+- type: TermsOfService
+  url: https://www.xylem.com/en-us/support/terms-and-conditions/
+- type: PrivacyPolicy
+  url: https://www.xylem.com/en-us/resources/policies/privacy/
+- type: Login
+  url: https://cloud.xylem.com/xcloud/sso/
+- type: StatusPage
+  url: https://status.xylem.com/
+- type: Security
+  url: security/xylem-vulnerability-disclosure.yml
+- type: VulnerabilityDisclosure
+  url: security/xylem-vulnerability-disclosure.yml
+- type: TrustCenter
+  url: security/xylem-trust-center.yml
+- type: Compliance
+  url: security/xylem-trust-center.yml
+- type: DomainSecurity
+  url: security/xylem-domain-security.yml
+- type: WellKnown
+  url: well-known/xylem-well-known.yml
+- type: Authentication
+  url: authentication/xylem-authentication.yml
+- type: Conformance
+  url: conformance/xylem-conformance.yml
+- type: Conventions
+  url: conventions/xylem-conventions.yml
+- type: ErrorCatalog
+  url: errors/xylem-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/xylem-lifecycle.yml
+- type: Plans
+  url: plans/xylem-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/xylem-rate-limits.yml
+
+apis:
+- aid: xylem:xylem-docview-api
+  name: Xylem Doc View API
+  description: The DocView API from Xylem — 7 operation(s) for docview.
+  humanURL: https://apis-dev.xylem.com/Home/Index
+  baseURL: https://apis-dev.xylem.com
+  tags:
+  - DocView
+  properties:
+  - type: OpenAPI
+    url: openapi/xylem-docview-api-openapi.yml
+  - type: Documentation
+    url: https://apis-dev.xylem.com/swagger
+- aid: xylem:xylem-infor-api
+  name: Xylem Infor API
+  description: The Infor API from Xylem — 1 operation(s) for infor.
+  humanURL: https://apis-dev.xylem.com/Home/Index
+  baseURL: https://apis-dev.xylem.com
+  tags:
+  - Infor
+  properties:
+  - type: OpenAPI
+    url: openapi/xylem-infor-api-openapi.yml
+  - type: Documentation
+    url: https://apis-dev.xylem.com/swagger
+- aid: xylem:xylem-mes-api
+  name: Xylem MES API
+  description: The MES API from Xylem — 16 operation(s) for mes.
+  humanURL: https://apis-dev.xylem.com/Home/Index
+  baseURL: https://apis-dev.xylem.com
+  tags:
+  - MES
+  properties:
+  - type: OpenAPI
+    url: openapi/xylem-mes-api-openapi.yml
+  - type: Documentation
+    url: https://apis-dev.xylem.com/swagger
+- aid: xylem:xylem-mes-v2-api
+  name: Xylem MES V2 API
+  description: The MES_v2 API from Xylem — 21 operation(s) for mes_v2.
+  humanURL: https://apis-dev.xylem.com/Home/Index
+  baseURL: https://apis-dev.xylem.com
+  tags:
+  - MES_v2
+  properties:
+  - type: OpenAPI
+    url: openapi/xylem-mes-v2-api-openapi.yml
+  - type: Documentation
+    url: https://apis-dev.xylem.com/swagger
+- aid: xylem:xylem-nameplate-api
+  name: Xylem Name Plate API
+  description: The NamePlate API from Xylem — 9 operation(s) for nameplate.
+  humanURL: https://apis-dev.xylem.com/Home/Index
+  baseURL: https://apis-dev.xylem.com
+  tags:
+  - NamePlate
+  properties:
+  - type: OpenAPI
+    url: openapi/xylem-nameplate-api-openapi.yml
+  - type: Documentation
+    url: https://apis-dev.xylem.com/swagger
+- aid: xylem:xylem-serialcard-api
+  name: Xylem Serial Card API
+  description: The SerialCard API from Xylem — 3 operation(s) for serialcard.
+  humanURL: https://apis-dev.xylem.com/Home/Index
+  baseURL: https://apis-dev.xylem.com
+  tags:
+  - SerialCard
+  properties:
+  - type: OpenAPI
+    url: openapi/xylem-serialcard-api-openapi.yml
+  - type: Documentation
+    url: https://apis-dev.xylem.com/swagger
 x-enrichment:
-  date: '2026-09-04'
+  date: '2026-10-19'
   status: enriched
-  artifacts_added: 13
-  pass: local-v3
+  artifacts_added: 10
+  pass: local-v5

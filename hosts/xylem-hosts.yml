@@ -1,0 +1,128 @@
+generated: '2026-10-19'
+method: derived
+source: the pre-flight dossier, apis.yml pointers, spec servers, well-known, vendors -- nothing fetched here
+generator: derive-hosts.py
+summary:
+  hosts: 9
+  own: 8
+  other_domain: 0
+  platform: 1
+  roles:
+  - api
+  - identity
+  - other
+  - status
+  - website
+hosts:
+- host: amp.xylem.com
+  found_by:
+  - probed
+  - site-links
+  - contract-discovery
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: xylem.com
+  role: other
+  relation: own
+- host: api.xylem.com
+  found_by:
+  - contract-discovery
+  types: []
+  serves: []
+  registrable_domain: xylem.com
+  role: api
+  relation: own
+- host: apis-dev.xylem.com
+  found_by:
+  - apis[]
+  - probed
+  - site-links
+  - well-known
+  types: []
+  serves:
+  - api
+  - docs
+  registrable_domain: xylem.com
+  role: other
+  relation: own
+- host: apis-test.xylem.com
+  found_by:
+  - probed
+  - site-links
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: xylem.com
+  role: other
+  relation: own
+- host: cloud.xylem.com
+  found_by:
+  - pointer
+  - probed
+  - contract-discovery
+  - well-known
+  - vendor-detect
+  types:
+  - Login
+  serves:
+  - identity
+  vendor: keycloak
+  registrable_domain: xylem.com
+  role: identity
+  relation: own
+- host: portal.xylem.com
+  found_by:
+  - probed
+  - site-links
+  - docs-index
+  - well-known
+  types: []
+  serves:
+  - docs
+  registrable_domain: xylem.com
+  role: other
+  relation: own
+- host: status.xylem.com
+  found_by:
+  - pointer
+  - probed
+  - site-links
+  - contract-discovery
+  - well-known
+  types:
+  - StatusPage
+  serves: []
+  registrable_domain: xylem.com
+  role: status
+  relation: own
+- host: www.linkedin.com
+  found_by:
+  - pointer
+  types:
+  - LinkedIn
+  serves: []
+  registrable_domain: linkedin.com
+  role: other
+  relation: platform
+- host: www.xylem.com
+  found_by:
+  - pointer
+  - probed
+  - contract-discovery
+  - well-known
+  - vendor-detect
+  types:
+  - Newsroom
+  - Leadership
+  - Website
+  - Blog
+  - Support
+  - TermsOfService
+  - PrivacyPolicy
+  serves:
+  - cdn
+  vendor: cloudflare
+  registrable_domain: xylem.com
+  role: website
+  relation: own

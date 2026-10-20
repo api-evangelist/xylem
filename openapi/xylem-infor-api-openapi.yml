@@ -1,0 +1,82 @@
+openapi: 3.2.0
+info:
+  title: Xylem Infor API
+  version: v3.5
+  description: 'Operations tagged Infor across 2 of this provider''s published API definitions: xylem-apis-dev-swagger.json, xylem-apis-manager-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://apis-dev.xylem.com
+tags:
+- name: Infor
+paths:
+  /api/Infor/Get:
+    post:
+      tags:
+      - Infor
+      summary: Returns xml or json response
+      operationId: Infor_Get
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/DataResponse_Object'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/DataResponse_Object'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponse_Object'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DataResponse_Object'
+      security:
+      - Apis Manager: []
+        Bearer: []
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/InforRequest'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/InforRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InforRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InforRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/InforRequest'
+        description: The config name, template name and parameters.
+        required: true
+    servers:
+    - url: https://apis-dev.xylem.com
+components:
+  schemas:
+    DataResponse_Object:
+      type: object
+      properties:
+        Data:
+          type: object
+    InforRequest:
+      type: object
+      properties:
+        ConfigName:
+          type: string
+        TemplateName:
+          type: string
+        TemplateParameters:
+          type: string
+  securitySchemes:
+    Apis_Manager:
+      type: oauth2
+      flows:
+        password:
+          scopes: {}
+          tokenUrl: /token
+x-refined-from:
+- xylem-apis-dev-swagger.json
+- xylem-apis-manager-openapi.yml
