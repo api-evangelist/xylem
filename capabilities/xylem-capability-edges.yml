@@ -1,0 +1,37 @@
+slug: xylem
+provider: Xylem
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Manufacturing & Industrial
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: MES
+  spec_file: xylem-mes-api-openapi.yml
+  capability_id: BC-1010.10
+  capability_id_l1: BC-1010
+  capability_name: Work Order Management
+  confidence: 0.8
+  evidence: 'GET /api/MES/Get/BrazedShopOrders  MES_GetBrazedShopOrders  Returns brazed shop orders; schemas:
+    ShopOrder, NewShopOrder, BOM'
+  reason: Explicitly an MES surface exposing shop orders, routings, BOMs and shop-floor order creation
+    for the brazed product line — manufacturing execution with shop/work order lifecycle at its core.
+    Some ambiguity between work order management and broader shop floor execution.
+- tag: MES_v2
+  spec_file: xylem-mes-v2-api-openapi.yml
+  capability_id: BC-1010.10
+  capability_id_l1: BC-1010
+  capability_name: Work Order Management
+  confidence: 0.75
+  evidence: 'GET /api/MES_v2/Get/ShopOrders  MES_v2_GetShopOrders  Returns shop orders; schemas: ShopOrder_v2,
+    Routing_v2, OrderBOM_v2'
+  reason: 'V2 of the MES surface: shop orders by part/order number, routings, order BOMs, stock parts
+    — shop-floor execution centred on shop order data. Also carries purchase order and stock part reads,
+    adding some ambiguity on the precise sub-capability.'
