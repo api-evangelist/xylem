@@ -1,0 +1,11 @@
+{
+ "url": "https://apis-dev.xylem.com/swagger/docs/v3.5",
+ "final": "https://apis-dev.xylem.com/swagger/docs/v3.5",
+ "status": 200,
+ "bytes": 129044,
+ "sha256": "5475f8029aaf57d30854747d9a5dd158f1274baf50bc0b51fe6c46ccc7017418",
+ "fetched_at": "2026-10-20",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "re-fetched to source an original the capability-gap pilot (roadmap#979) saved without a fetch record"
+}
