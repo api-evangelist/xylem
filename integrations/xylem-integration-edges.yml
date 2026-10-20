@@ -1,0 +1,16 @@
+generated: '2026-10-19'
+method: none
+source:
+- https://zapier.com/apps/xylem/integrations
+- https://n8n.io/integrations/xylem/
+- https://composio.dev/toolkits/xylem
+- https://monid.ai/tools/xylem
+checked:
+- https://composio.dev/toolkits/xylem
+- https://monid.ai/tools/xylem
+- https://n8n.io/integrations/xylem/
+- https://zapier.com/apps/xylem/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
