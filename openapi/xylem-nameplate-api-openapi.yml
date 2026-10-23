@@ -797,3 +797,9 @@ components:
 x-refined-from:
 - xylem-apis-dev-swagger.json
 - xylem-apis-manager-openapi.yml
+x-provenance:
+  method: harvested
+  publisher: Xylem
+  source: https://apis-dev.xylem.com/swagger/docs/v3.5
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
