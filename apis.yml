@@ -63,6 +63,9 @@ description: 'Xylem Inc. (NYSE: XYL) is a global water technology company that m
   for the Xylem Cloud identity realm.'
 
 common:
+- type: CapabilityMap
+  url: capabilities/xylem-capability-edges.yml
+  name: Xylem Business Capability Map
 - type: AgentSkill
   url: skills/_index.yml
 - type: AgenticAccess
