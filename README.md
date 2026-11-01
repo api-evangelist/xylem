@@ -1,4 +1,4 @@
-# Xylem (xylem)
+# Xylem
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,35 +64,126 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Xylem is a Fortune 500 company. This repository captures the APIs, developer tools, and machine-readable API artifacts for Xylem.
+Xylem Inc. (NYSE: XYL) is a global water technology company that moves, treats, analyzes, monitors and returns water to the environment across the full water cycle. Its brands include Sensus smart metering and AMI networks, Xylem Vue utility operations software built with Idrica's GoAigua platform, YSI water quality instrumentation, HYPACK hydrographic survey software, and the Flygt, Godwin, WEDECO and Aanderaa product lines. Xylem operates live, first-party API hosts for Xylem Cloud, the Xylem Vue services and its product selector, but publishes no API contract, developer portal or reference for any of them; the one machine-readable document it serves anonymously is the OpenID Connect discovery metadata for the Xylem Cloud identity realm.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/xylem/refs/heads/main/apis.yml)
+**Areas:** Fortune 1000 · Water · Water Technology · Utilities · Smart Metering · Industrial IoT · Water Quality · Wastewater · Manufacturing
 
-## Scope
+## Xylem on APIs.io
 
-- **Type:** Contract
-- **Position:** Consuming
-- **Access:** 3rd-Party
+Everything profiled for Xylem is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/xylem/](https://apis.io/providers/xylem/)** — or go straight to one of the APIs or properties below.
 
-## Tags:
+### APIs (6)
 
- - Fortune 500
+- [Xylem Doc View API](https://apis.io/apis/xylem/xylem-docview-api/) — The DocView API from Xylem — 7 operation(s) for docview.
+- [Xylem Infor API](https://apis.io/apis/xylem/xylem-infor-api/) — The Infor API from Xylem — 1 operation(s) for infor.
+- [Xylem MES API](https://apis.io/apis/xylem/xylem-mes-api/) — The MES API from Xylem — 16 operation(s) for mes.
+- [Xylem MES V2 API](https://apis.io/apis/xylem/xylem-mes-v2-api/) — The MES_v2 API from Xylem — 21 operation(s) for mes_v2.
+- [Xylem Name Plate API](https://apis.io/apis/xylem/xylem-nameplate-api/) — The NamePlate API from Xylem — 9 operation(s) for nameplate.
+- [Xylem Serial Card API](https://apis.io/apis/xylem/xylem-serialcard-api/) — The SerialCard API from Xylem — 3 operation(s) for serialcard.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-03-21
-- **Modified:** 2026-03-21
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-No public APIs have been documented yet. Contributions welcome.
+Which operations an agent can call, which act, and which need a human in the loop.
 
-## Common Properties
+- [Xylem Agentic Access](https://apis.io/agentic-access/xylem/xylem-agentic-access/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Xylem API Rules](https://apis.io/rules/xylem/xylem-rules/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Xylem Authentication](https://apis.io/security/xylem/xylem-authentication/)
+- [Xylem Domain Security](https://apis.io/security/xylem/xylem-domain-security/)
+- [Xylem Trust Center](https://apis.io/security/xylem/xylem-trust-center/)
+- [Xylem Vulnerability Disclosure](https://apis.io/security/xylem/xylem-vulnerability-disclosure/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Xylem Scopes](https://apis.io/scopes/xylem/xylem-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Xylem Plans Pricing](https://apis.io/plans/xylem/xylem-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Xylem Rate Limits](https://apis.io/rate-limits/xylem/xylem-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.xylem.com)
+- [Support](https://www.xylem.com/en-us/contact-us/)
+- [Blog](https://www.xylem.com/en-us/resources/blogs/making-waves/)
+- [Terms of service](https://www.xylem.com/en-us/support/terms-and-conditions/)
+- [Privacy policy](https://www.xylem.com/en-us/resources/policies/privacy/)
+- [Status](https://status.xylem.com/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** API Evangelist
+**Kin Score 49.7** — developing · rubric 0.24.0 · scored 2026-10-19
 
-**Email:** info@apievangelist.com
+| Facet | Score |
+|---|---|
+| Discoverability | 69.6 |
+| Contract quality | 33.4 |
+| Contract governance | 80.9 |
+| Operational transparency | 34.2 |
+| Developer ergonomics | 35.0 |
+| Access clarity | 43.4 |
+
+**Agent readiness 46.3** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | unknown |
+| Reversibility Documented | — |
+| MCP Server | documented (partial credit) |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | unknown |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+
+**Regulatory alignment 43.4** — Energy & Utilities
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/xylem/](https://apis.io/providers/xylem/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Xylem: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/xylem/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
